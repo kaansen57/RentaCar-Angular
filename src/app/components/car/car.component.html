@@ -1,0 +1,22 @@
+<div class="col-md-6 offset-3">
+    <table  class="table table-dark table-striped table-bordered">
+        <tr>
+            <th>ID</th>
+            <th>Brand</th>
+            <th>Color</th>
+            <th>Car Name</th>
+            <th>Price</th>
+            <th>Description</th>
+            <th>Year</th>
+        </tr>
+        <tr *ngFor="let car of cars; index as i;">
+            <td>{{car.id}}</td>
+            <td>{{car.brandId}}</td>
+            <td>{{car.colorId}}</td>
+            <td>{{car.carName }}</td>
+            <td>{{car.dailyPrice + "$"}}</td>
+            <td>{{car.description}}</td>
+            <td>{{car.modelYear}}</td>
+        </tr>
+    </table>
+</div>
