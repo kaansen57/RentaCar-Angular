@@ -1,5 +1,6 @@
-<div class="col-md-6 offset-3">
-    <table  class="table table-dark table-striped table-bordered">
+
+    <table class="table table-bordered table-striped table-hover">
+        <thead class="thead-dark">
         <tr>
             <th>ID</th>
             <th>Brand</th>
@@ -8,7 +9,10 @@
             <th>Price</th>
             <th>Description</th>
             <th>Year</th>
+            <th>Operations</th>
         </tr>
+    </thead>
+    <tbody>
         <tr *ngFor="let car of cars; index as i;">
             <td>{{car.id}}</td>
             <td>{{car.brandId}}</td>
@@ -17,6 +21,8 @@
             <td>{{car.dailyPrice + "$"}}</td>
             <td>{{car.description}}</td>
             <td>{{car.modelYear}}</td>
+            <td> <button class="btn btn-danger" (ngSubmit)="delete(car)" >Sil</button> </td>
         </tr>
+    </tbody>
     </table>
-</div>
+
