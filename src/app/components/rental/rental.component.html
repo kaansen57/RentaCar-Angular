@@ -1,0 +1,24 @@
+<h2 class="mt-4 mb-3 text-center ">Kiralanmış Araçlar</h2>
+<div class="spinner-border text-danger" role="status" *ngIf="!loading">
+    <span class="sr-only">Yükleniyor...</span>
+  </div>
+<table class="table table-hover table-striped table-success text-center">
+    <thead>
+        <tr>
+            <th>Model </th>
+            <th>Marka </th>
+            <th>Kiralayan Kişi</th>
+            <th>Kiralayan Şirket</th>
+            <th>Kiralama Tarihi</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let rental of rentals;index as i;">
+            <td> {{rental.carName}} </td>
+            <td> {{rental.brandName}} </td>
+            <td> {{rental.userFullName}} </td>
+            <td> {{rental.companyName}} </td>
+            <td> {{rental.rentDate}} </td>
+        </tr>
+    </tbody>
+</table>

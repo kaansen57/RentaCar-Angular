@@ -1,27 +1,23 @@
 
-    <table class="table table-bordered table-striped table-hover">
+<div class="spinner-border text-danger" role="status" *ngIf="!loading">
+    <span class="sr-only">Yükleniyor...</span>
+  </div>
+  <h2 class="mb-3 text-center ">Araç Listesi</h2>
+    <table class="table table-bordered table-striped table-hover" >
         <thead class="thead-dark">
         <tr>
-            <th>ID</th>
-            <th>Brand</th>
-            <th>Color</th>
-            <th>Car Name</th>
-            <th>Price</th>
-            <th>Description</th>
-            <th>Year</th>
-            <th>Operations</th>
+            <th>Model</th>
+            <th>Marka</th>
+            <th>Renk</th>
+            <th>Günlük Fiyat</th>
         </tr>
     </thead>
     <tbody>
         <tr *ngFor="let car of cars; index as i;">
-            <td>{{car.id}}</td>
-            <td>{{car.brandId}}</td>
-            <td>{{car.colorId}}</td>
-            <td>{{car.carName }}</td>
+            <td>{{car.carName}}</td>
+            <td>{{car.brandName}}</td>
+            <td>{{car.colorName}}</td>
             <td>{{car.dailyPrice + "$"}}</td>
-            <td>{{car.description}}</td>
-            <td>{{car.modelYear}}</td>
-            <td> <button class="btn btn-danger" (ngSubmit)="delete(car)" >Sil</button> </td>
         </tr>
     </tbody>
     </table>
