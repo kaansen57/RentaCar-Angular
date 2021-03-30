@@ -1,15 +1,32 @@
 import { Component, OnInit } from '@angular/core';
+import { Color } from 'src/app/models/color/color';
+import { ColorService } from 'src/app/services/color.service';
 
 @Component({
   selector: 'app-color',
   templateUrl: './color.component.html',
-  styleUrls: ['./color.component.css']
+  styleUrls: ['./color.component.css'],
 })
 export class ColorComponent implements OnInit {
+  constructor(private colorService: ColorService) {}
 
-  constructor() { }
+  colors: Color[];
+  currentColor: Color;
+  showColor: boolean = true;
 
-  ngOnInit(): void {
+  show() {
+    this.showColor = !this.showColor;
+  }
+  setColor(color: Color) {
+    this.currentColor = color;
   }
 
+  getAllColor() {
+    this.colorService.getAll().subscribe((response) => {
+      this.colors = response.data;
+    });
+  }
+  ngOnInit(): void {
+    this.getAllColor();
+  }
 }

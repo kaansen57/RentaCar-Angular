@@ -14,8 +14,9 @@ export class BrandService {
   
   baseURL = "https://localhost:44383/api/brand/";
   /*Methods*/
-  getBrands(): Observable<ListResponseModel<Brand>>{
-   return this.httpClient.get<ListResponseModel<Brand>>(this.baseURL + "getall");
+  getAll(): Observable<ListResponseModel<Brand>>{
+    let newURL =  this.baseURL + "getall";
+    return this.httpClient.get<ListResponseModel<Brand>>(newURL);
   }
 
 }

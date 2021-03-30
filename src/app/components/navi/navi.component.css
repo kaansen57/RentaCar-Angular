@@ -1,0 +1,60 @@
+header{
+    background-color:#fff;
+}
+.header-menu{
+    border-right:1px solid #dfdfdf;
+}
+.logo{
+    font-size:30px;
+    color:#D23B38;
+    font-family: 'Pacifico', cursive;
+}
+#support-icon{
+    width:50px;
+    height:50px;
+    border-radius:50px;
+    float:left;
+    background-color:#D23B38;
+    margin-right:10px;
+    transition:all .5s ease;
+}  
+#support-icon:hover{
+    background-color:#a00120;
+    transition:all .5s ease;
+} 
+#support-icon svg{
+    fill:white;
+    width:50px;
+    height:25px;
+    margin-top:10px;
+} 
+
+.login-or{
+    font-size:16px;
+    color:#acacac;
+    opacity:.8;
+    font-weight: 300;
+    margin:0 15px;
+}
+a {
+    text-decoration: none;
+    color :#333;
+    font-size: 15px;
+}
+
+svg{
+    width:20px;
+    height:20px;
+    margin-right:5px;
+}
+h3{
+    color:#333333;
+    font-size: 18px;
+}
+h4{
+    color:#707070;
+    font-size:16px;
+}
+.p-button-danger{
+    background-color: #D23B38;
+}

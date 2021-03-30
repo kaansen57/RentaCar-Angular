@@ -12,6 +12,7 @@ import { Car } from 'src/app/models/car/car';
 import { CarService } from 'src/app/services/car.service';
 import { ListResponseModel } from 'src/app/models/listResponseModel';
 import { CarDto } from 'src/app/models/car/carDto';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-car',
@@ -22,7 +23,11 @@ import { CarDto } from 'src/app/models/car/carDto';
   providedIn: 'root',
 })
 export class CarComponent implements OnInit {
-  constructor(private carService: CarService) {}
+  constructor(
+    private carService: CarService,
+    private activatedRoute: ActivatedRoute
+  ) {}
+
 
   /*Data */
   loading = false;
@@ -34,14 +39,40 @@ export class CarComponent implements OnInit {
   };
 
   /*Methods */
-  getCarsAll(){
-    this.carService.getAll().subscribe(response=>{
-        this.cars = response.data;
-        this.loading = true;
-    })
+  getCarsAll() {
+    this.carService.getAll().subscribe((response) => {
+      this.cars = response.data;
+      this.loading = true;
+    });
   }
+
+  getCarBrandFiltered(brandId: number) {
+    this.carService.getCarBrandFiltered(brandId).subscribe((response) => {
+      this.cars = response.data;
+      this.loading = true;
+    });
+  }
+
+  getCarColorFiltered(colorId: number) {
+    this.carService.getCarColorFiltered(colorId).subscribe((response) => {
+      this.cars = response.data;
+      this.loading = true;
+    });
+  }
+  showDetail(car:CarDto){
+    console.log(car);
+  }
+
   ngOnInit(): void {
-    this.getCarsAll();
+    this.activatedRoute.params.subscribe((params) => {
+      if (params['brandId']) {
+        this.getCarBrandFiltered(params['brandId']);
+      } else if (params['colorId']) {
+        this.getCarColorFiltered(params['colorId']);
+      } else {
+        this.getCarsAll();
+      }
+    });
   }
 
   // delete(data: Car): Observable<any> {

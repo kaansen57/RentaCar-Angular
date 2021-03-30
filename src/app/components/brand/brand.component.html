@@ -1,11 +1,10 @@
-
-<div class="alert alert-danger font-weight-bold text-center "  role="button" (click)="show()" >
- Markalar
+<div class="alert alert-danger font-weight-bold text-center " role="button" (click)="show()">
+  Markalar
 </div>
 <ul class="list-group" *ngIf="showBrand">
-  <a href="#" class="text-decoration-none text-dark">
-    <li class="list-group-item" *ngFor="let brand of brands;index as i;" >
-     {{i+1}}-) {{brand.brandName}}
-    </li>
-  </a>
+  <li role="button" routerLink="/cars/filters?brandId/{{brand.brandId}}" (click)="setBrand(brand)" class="list-group-item"
+    [class.active]="currentBrand==brand" *ngFor="let brand of brands;index as i;">
+    {{i+1}}-) {{brand.brandName}}
+  </li>
 </ul>
+

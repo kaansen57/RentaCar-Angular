@@ -1,0 +1,25 @@
+.wrapper-home {
+  background-color: #D23B38;
+  width: 100%;
+  min-height: 700px;
+  padding: 30px;
+  margin: 0;
+}
+
+.title {
+  color: white;
+}
+.subtitle {
+  color: rgba(255, 255, 255, 0.7);
+}
+.search-wrapper {
+  background-color: white;
+  border-radius: 10px;
+  height: 300px;
+  -webkit-box-shadow: 11px 7px 50px -20px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 11px 7px 50px -20px rgba(0, 0, 0, 0.75);
+  box-shadow: 11px 7px 50px -20px rgba(0, 0, 0, 0.75);
+}
+.p-button-success {
+  background-color: #449e48 !important;
+}

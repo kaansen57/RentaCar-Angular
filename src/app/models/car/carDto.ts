@@ -1,7 +1,10 @@
 
 export interface CarDto{
-        dailyPrice:number;
-        brandName:string;
-        colorName:string;
+        carId:number;
         carName:string;
+        brandId:number;
+        brandName:string;
+        colorId:number;
+        colorName:string;
+        dailyPrice:number;
 }

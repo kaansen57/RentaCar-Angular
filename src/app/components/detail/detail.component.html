@@ -1,0 +1,10 @@
+<p>detail works!</p>
+<ul>
+    <li *ngFor="let detail of details">
+        {{detail.brandName}}
+        {{detail.carName}}
+    </li>
+    <li *ngFor="let image of images"> {{image.imagePath}} </li>
+    <img *ngFor="let image of images" width="300" height="300"
+    src="https://localhost:44383/{{image.imagePath}}" alt="">
+</ul>

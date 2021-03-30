@@ -14,14 +14,19 @@ export class BrandComponent implements OnInit {
   //data
   brands:Brand[]=[];
   showBrand = true;
+  currentBrand:Brand;
+
   //Methods
+  setBrand(brand:Brand){
+    this.currentBrand = brand;
+    console.log(this.currentBrand);
+  }
 
   getBrandAll(){
-    this.brandService.getBrands().subscribe(response=>{
+    this.brandService.getAll().subscribe(response=>{
         this.brands = response.data;
     })
   }
-
   show(){
     this.showBrand = !this.showBrand;
   }

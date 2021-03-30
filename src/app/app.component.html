@@ -1,21 +1,19 @@
-<app-navi></app-navi>
-<div class="container">
-  <div class="row">
-    <div class="col-md-3">
-      <app-brand></app-brand>
-    </div>
-    <div class="col-md-9">
-      <app-car></app-car>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-md-3">
 
+  <app-navi></app-navi>
+<div >
+    <div class="col-md-3">
+      <!-- <app-brand></app-brand>
+      <app-color></app-color> -->
+      <!-- <p-dropdown [options]="cities" optionLabel="name"
+      [showTransitionOptions]="'5ms'"
+      [virtualScroll]="true" optionValue="code">
+
+      </p-dropdown> -->
     </div>
-    <div class="col-md-9">
-      <app-rental></app-rental>
+    <div>
+      <router-outlet></router-outlet>
     </div>
-  </div>
+
 </div>
 
 
@@ -23,4 +21,3 @@
   <p *ngIf="condition">Açkapa </p>   
   <button class="btn btn-sm btn-warning" (click)="open()"> Aç/Kapa  </button>
   </div> -->
-<router-outlet></router-outlet>
