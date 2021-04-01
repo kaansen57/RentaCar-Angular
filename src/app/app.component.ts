@@ -17,6 +17,9 @@ export class AppComponent implements OnInit {
     {name: 'Paris', code: 'PRS'}
 ];
 
+addItem(e:any){
+    console.log(e);
+}
 condition = false;
 open() {
   this.condition = !this.condition;

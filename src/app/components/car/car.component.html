@@ -1,34 +1,57 @@
-<!-- <div class="spinner-border text-danger" role="status" *ngIf="!loading">
-    <span class="sr-only">Yükleniyor...</span>
-  </div> -->
-  <app-status></app-status>
+<app-status ></app-status>
 <div class="container">
     <div class="row mt-5">
-        <div class="col-md-3">
-            <app-brand></app-brand>
-            <app-color></app-color>
+        <div class="col-md-4">
+            <p-fieldset>
+                <ng-template pTemplate="header">
+                    <i style="font-size:20px;" class="float-right pi pi-trash" routerLink="/cars"
+                        (click)="filterReset()"></i>
+                    <h5> <i style="font-size:18px;" class="pi pi-filter "></i> Sonuçları Filtrele</h5>
+                </ng-template>
+                <p-accordion [multiple]="true">
+                    <p-accordionTab header="Fiyat Aralığı">
+                        <ul class="list-group">
+                            <li class="list-group-item">
+                                <p-slider [(ngModel)]="rangeValues" [range]="true" [animate]="true" [min]="0"
+                                    [max]="1500"></p-slider>
+                                <span class="mt-2 float-left">{{rangeValues[0]}}</span>
+                                <span class="mt-2 float-right">{{ rangeValues[1]}}</span>
+                            </li>
+                        </ul>
+                    </p-accordionTab>
+                </p-accordion>
+
+                <app-price></app-price>
+                <app-brand></app-brand>
+                <app-color></app-color>
+            </p-fieldset>
         </div>
-        <div class="col-md-9">
-            <!-- <table class="table table-bordered table-striped table-hover text-center">
-                <thead class="thead-dark">
-                    <tr>
-                        <th>Marka</th>
-                        <th>Model</th>
-                        <th>Renk</th>
-                        <th>Günlük Fiyat</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr *ngFor="let car of cars; index as i;" [routerLink]="['/car/detail/',car.carId]" (click)="showDetail(car)">
-                        <td>{{car.brandName}}</td>
-                        <td>{{car.carName}}</td>
-                        <td>{{car.colorName}}</td>
-                        <td>{{car.dailyPrice + "₺"}}</td>
-                    </tr>
-                </tbody>
-            </table> -->
-           
+        <div class="col-md-8">
+            <app-filter-menu [(filterText)]="filterText"></app-filter-menu>
+
+            <p-dataView [value]="cars | filterPipe:filterText | priceFilter:rangeValues[0]:rangeValues[1]">
+                <ng-template let-car pTemplate="listItem">
+
+                    <div class="p-col-12">
+                        <div class="car-list-item" [routerLink]="['/car/detail/',car.carId]">
+                            <img src="https://localhost:44383/{{imageFilter(car.carId)}}" [alt]="car.carName" />
+                            <div class="car-list-detail">
+                                <div class="car-name"></div>
+                                <div class="car-name">{{car.carName}}</div>
+                                <div class="car-description">{{car.brandName }}</div>
+                                <!-- <p-rating [ngModel]="car.rating" [readonly]="true" [cancel]="false"></p-rating> -->
+                                <i class="pi pi-palette car-category-icon"></i><span
+                                    class="car-category">{{car.colorName | uppercase}}</span>
+                            </div>
+                            <div class="car-list-action">
+                                <span class="car-price">{{car.dailyPrice}}₺</span>
+                                <span class="float-right">KDV Dahil</span>
+                                <span class="car-price badge badge-success">{{car.dailyPrice | vatAdded:0.20}}</span>
+                            </div>
+                        </div>
+                    </div>
+                </ng-template>
+            </p-dataView>
         </div>
     </div>
 </div>
-<h2 class="mb-3 text-center ">Araç Listesi</h2>

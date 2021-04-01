@@ -6,14 +6,12 @@ import { HomeComponent } from './components/home/home.component';
 import { RentalComponent } from './components/rental/rental.component';
 
 const routes: Routes = [
-  // {path:"" , pathMatch:"full",component:CarComponent},
   {path:"",component:HomeComponent},
-  {path:"car",component:CarComponent},
+  {path:"cars",component:CarComponent},
   {path:"car/detail/:carId",component:DetailComponent},
   {path:"rental" , component:RentalComponent},
-  {path:"cars/filters?brandId/:brandId" , component:CarComponent},
-  {path:"cars/color/:colorId" , component:CarComponent},
-  {path:"cars/color/:brandId/:colorId" , component:CarComponent},
+  {path:"cars/filters/brandId/:brandId" , component:CarComponent},
+  {path:"cars/filters/colorId/:colorId" , component:CarComponent},
 ];
 
 @NgModule({

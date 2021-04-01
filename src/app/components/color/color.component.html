@@ -1,9 +1,12 @@
-<div class="mt-3 alert alert-danger font-weight-bold text-center " role="button" (click)="show()">
-    Renkler
-  </div>
-  <ul class="list-group" *ngIf="showColor">
-    <li role="button" routerLink="/cars/color/{{color.colorId}}" (click)="setColor(color)" class="list-group-item"
-      [class.active]="currentColor==color" *ngFor="let color of colors;index as i;">
-      {{i+1}}-) {{color.colorName}}
-    </li>
-  </ul>
+
+
+<p-accordion [multiple]="true">
+  <p-accordionTab header="Renk">
+    <ul class="list-group">
+      <li role="button" routerLink="/cars/filters/colorId/{{color.colorId}}" (click)="setColor(color)"
+        class="list-group-item" [class.active]="currentColor==color" *ngFor="let color of colors;index as i;">
+        {{i+1}}-) {{color.colorName}}
+      </li>
+    </ul>
+  </p-accordionTab>
+</p-accordion>

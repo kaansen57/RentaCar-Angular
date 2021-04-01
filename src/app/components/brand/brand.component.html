@@ -1,10 +1,17 @@
-<div class="alert alert-danger font-weight-bold text-center " role="button" (click)="show()">
+<!-- <div class="alert alert-danger font-weight-bold text-center " role="button" (click)="show()">
   Markalar
 </div>
 <ul class="list-group" *ngIf="showBrand">
-  <li role="button" routerLink="/cars/filters?brandId/{{brand.brandId}}" (click)="setBrand(brand)" class="list-group-item"
-    [class.active]="currentBrand==brand" *ngFor="let brand of brands;index as i;">
-    {{i+1}}-) {{brand.brandName}}
-  </li>
-</ul>
+ 
+</ul> -->
+<p-accordion [multiple]="true">
+  <p-accordionTab header="Araç Markası">
+    <ul class="list-group">
+      <li role="button" routerLink="/cars/filters/brandId/{{brand.brandId}}" (click)="setBrand(brand)"
+        class="list-group-item" [class.active]="currentBrand==brand" *ngFor="let brand of brands;index as i;">
+        {{i+1}}-) {{brand.brandName}}
+      </li>
+    </ul>
+  </p-accordionTab>
+</p-accordion>
 

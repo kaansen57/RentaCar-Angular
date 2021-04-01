@@ -1,0 +1,103 @@
+ .p-dropdown {
+    width: 14rem;
+    font-weight: normal;
+}
+.car-name {
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+.car-description {
+    margin: 0 0 1rem 0;
+}
+.car-category-icon {
+    vertical-align: middle;
+    margin-right: 0.5rem;
+}
+ .car-category {
+    font-weight: 600;
+    vertical-align: middle;
+}
+.car-list-item {
+    display: flex;
+    align-items: center;
+    padding: 1rem;
+    width: 100%;
+}
+ .car-list-item img {
+    width: 150px;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+    margin-right: 2rem;
+}
+ .car-list-item .car-list-detail {
+    flex: 1 1 0;
+}
+ .car-list-item .p-rating {
+    margin: 0 0 0.5rem 0;
+}
+.car-list-item .car-price {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    align-self: flex-end;
+}
+ .car-list-item .car-list-action {
+    display: flex;
+    flex-direction: column;
+}
+ .car-list-item .p-button {
+    margin-bottom: 0.5rem;
+}
+ .car-grid-item {
+    margin: 0.5em;
+    border: 1px solid var(--surface-d);
+}
+.car-grid-item .car-grid-item-top,.car-grid-item .car-grid-item-bottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+ .car-grid-item img {
+    width: 75%;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+    margin: 2rem 0;
+}
+.car-grid-item .car-grid-item-content {
+    text-align: center;
+}
+ .car-grid-item .car-price {
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+
+.btn-danger{
+    background-color:#D23B38;
+}
+
+@media screen and (max-width: 576px) {
+    .car-list-item {
+        flex-direction: column;
+        align-items: center;
+   }
+   .car-list-item img {
+        width: 75%;
+        margin: 2rem 0;
+   }
+     .car-list-item .car-list-detail {
+        text-align: center;
+   }
+    .car-list-item .car-price {
+        align-self: center;
+   }
+    .car-list-item .car-list-action {
+        display: flex;
+        flex-direction: column;
+   }
+    .car-list-item .car-list-action {
+        margin-top: 2rem;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+   }
+}
