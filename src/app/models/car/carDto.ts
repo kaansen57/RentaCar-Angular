@@ -1,6 +1,4 @@
-import { Image } from "../image/image";
-
-export interface CarDto extends Image{
+export interface CarDto {
         carId:number;
         carName:string;
         brandId:number;

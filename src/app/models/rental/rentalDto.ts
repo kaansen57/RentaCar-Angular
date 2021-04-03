@@ -3,5 +3,5 @@ export interface RentalDto{
     brandName:string;
     userFullName:string;
     companyName:string;
-    rentDate:string;
+    rentDate:Date;
 }

@@ -9,25 +9,27 @@
                 </h3>
             </div>
 
-            <div class="col-md-5 mt-3 search-wrapper d-flex align-items-center" >
+            <div class="col-md-5 mt-3 search-wrapper d-flex align-items-center">
                 <div class="pt-4 pb-4 d-flex flex-wrap justify-content-center ">
                     <div class="col-md-6">
-                        <label for="startDate">Aracı Alış</label>
-                        <p-calendar (ngModel)="startDate" [readonlyInput]="true" [showIcon]="true" [showTime]="true"
-                            inputId="startDate"></p-calendar>
-                    </div>
-                    <div class="col-md-6" >
-                        <label for="endDate">Aracı Bırakış</label>
-                        <p-calendar (ngModel)="endDate" [readonlyInput]="true" [showIcon]="true" [showTime]="true"
-                            inputId="endDate"></p-calendar>
+                        <label for="range">Aracı Alış/Bırakış</label>
+                        <p-calendar [(ngModel)]="rangeDates" (onSelect)="change(rangeDates)" dateFormat="dd.mm.yy" selectionMode="range"
+                            [readonlyInput]="true" inputId="range"></p-calendar>
+                       
                     </div>
                     <div class="col-md-12 mt-4">
-                       <a routerLink="/cars" type="button"  class="btn btn-success">Araçları Ara</a>
+                        <a routerLink="/cars" type="button" class="btn btn-success">Araçları Ara</a>
                     </div>
                 </div>
             </div>
         </div>
-
     </div>
-
+    <!-- <label for="startDate">Aracı Alış</label>
+    <p-calendar (ngModel)="startDate" (ngModelChange)="changeDateEnd($event)" [readonlyInput]="true"
+        [showIcon]="true" [showTime]="true" inputId="startDate"></p-calendar>
 </div>
+<div class="col-md-6">
+    <label for="endDate">Aracı Bırakış</label>
+    <p-calendar (ngModel)="endDate" (ngModelChange)="changeDateStart($event)" [readonlyInput]="true"
+        [showIcon]="true" [showTime]="true" inputId="endDate"></p-calendar>
+</div> -->

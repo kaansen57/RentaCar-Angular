@@ -1,10 +1,10 @@
-<app-status ></app-status>
+<app-status></app-status>
 <div class="container">
     <div class="row mt-5">
         <div class="col-md-4">
             <p-fieldset>
                 <ng-template pTemplate="header">
-                    <i style="font-size:20px;" class="float-right pi pi-trash" routerLink="/cars"
+                    <i style="font-size:20px;" class="float-right pi pi-trash" role="button" routerLink="/cars"
                         (click)="filterReset()"></i>
                     <h5> <i style="font-size:18px;" class="pi pi-filter "></i> Sonuçları Filtrele</h5>
                 </ng-template>
@@ -15,12 +15,11 @@
                                 <p-slider [(ngModel)]="rangeValues" [range]="true" [animate]="true" [min]="0"
                                     [max]="1500"></p-slider>
                                 <span class="mt-2 float-left">{{rangeValues[0]}}</span>
-                                <span class="mt-2 float-right">{{ rangeValues[1]}}</span>
+                                <span class="mt-2 float-right">{{rangeValues[1]}}</span>
                             </li>
                         </ul>
                     </p-accordionTab>
                 </p-accordion>
-
                 <app-price></app-price>
                 <app-brand></app-brand>
                 <app-color></app-color>
@@ -28,10 +27,8 @@
         </div>
         <div class="col-md-8">
             <app-filter-menu [(filterText)]="filterText"></app-filter-menu>
-
-            <p-dataView [value]="cars | filterPipe:filterText | priceFilter:rangeValues[0]:rangeValues[1]">
+            <p-dataView [value]="cars | filterPipe:filterText | priceFilter:rangeValues[0]:rangeValues[1]" [paginator]="true" [rows]="10">
                 <ng-template let-car pTemplate="listItem">
-
                     <div class="p-col-12">
                         <div class="car-list-item" [routerLink]="['/car/detail/',car.carId]">
                             <img src="https://localhost:44383/{{imageFilter(car.carId)}}" [alt]="car.carName" />

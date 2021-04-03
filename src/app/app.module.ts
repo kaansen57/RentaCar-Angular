@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {FormsModule} from '@angular/forms';
+
 //primeng modül
 import { DropdownModule } from 'primeng/dropdown';
 import { ButtonModule } from 'primeng/button';
@@ -12,6 +13,12 @@ import {DataViewModule} from 'primeng/dataview';
 import {AccordionModule} from 'primeng/accordion';
 import {FieldsetModule} from 'primeng/fieldset';
 import {SliderModule} from 'primeng/slider';
+import {GalleriaModule} from 'primeng/galleria';
+import {ToastModule} from 'primeng/toast';
+import {StepsModule} from 'primeng/steps';
+
+
+
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -48,6 +55,8 @@ import { FilterMenuComponent } from './components/filter-menu/filter-menu.compon
     BrandFilterPipe,
     PriceFilterPipe,
     FilterMenuComponent,
+   
+    
   ],
   imports: [
     BrowserModule,
@@ -62,7 +71,11 @@ import { FilterMenuComponent } from './components/filter-menu/filter-menu.compon
     FormsModule,
     AccordionModule,
     FieldsetModule,
-    SliderModule
+    SliderModule,
+    GalleriaModule ,
+    ToastModule,
+    StepsModule,
+    
   ],
   providers: [],
   bootstrap: [AppComponent],

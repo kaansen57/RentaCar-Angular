@@ -1,10 +1,81 @@
+<app-status></app-status>
+<p-steps [model]="items" [readonly]="false"></p-steps>
+<div class="container-fluid mt-5 border">
 
-<ul>
-    <li *ngFor="let detail of details">
-        {{detail.brandName}}
-        {{detail.carName}}
-    </li>
-    <li *ngFor="let image of images"> {{image.imagePath}} </li>
-    <img *ngFor="let image of images" width="300" height="300"
-    src="https://localhost:44383/{{image.imagePath}}" alt="">
-</ul>
+    <p-toast position="top-right"></p-toast>
+    <div class="row">
+        <div class="col-md-6 border-right">
+            <span class="support mr-4">
+                <i class="pi pi-phone"></i>
+                <div class="7-24">7/24</div>
+            </span>
+            <div class="detail-wrapper mt-3 mb-5 ">
+                <h5 class="" *ngFor="let detail of details">
+                    {{detail.brandName}} {{detail.carName}}
+                </h5>
+                <div class="free-cancel mt-3">
+                    <i class="pi pi-check-circle mr-2"></i>KOŞULSUZ ÜCRETSİZ İPTAL
+                </div>
+            </div>
+
+            <div class="d-flex justify-content-center">
+                <!-- <p-galleria [(value)]="images" [responsiveOptions]="responsiveOptions"
+                    [containerStyle]="{'max-width': '480px'}" [showItemNavigators]="true" [numVisible]="2">
+                    <ng-template pTemplate="item" let-image>
+                        <img height="240" width="480" src="https://localhost:44383/{{image.imagePath}}"
+                            style="width: 100%; display: block;" />
+                    </ng-template>
+                    <ng-template pTemplate="thumbnail" let-image>
+                        <div class="p-grid p-nogutter p-justify-center">
+                            <img width="100" height="100" src="https://localhost:44383/{{image.imagePath}}"
+                                style="display: block;" />
+                        </div>
+                    </ng-template>
+                </p-galleria> -->
+            </div>
+        </div>
+        <div class="col-md-3 p-3 d-flex justify-content-center border-right ">
+            <div *ngFor="let car of details" class="car-description">
+                <h5>Vites Tipi :</h5>
+                <h5>Yakıt :</h5>
+                <h5>Sınıf :</h5>
+                <h5>Renk : {{car.colorName}}</h5>
+            </div>
+        </div>
+        <div class="col-md-3 p-3 ">
+            <div class="rent-title ">
+                <h5>Kiralama Detayları</h5>
+            </div>
+            <div class="rent-dailyprice-wrapper mt-5">
+                <div class="rent-dailyprice" *ngFor="let detail of details">
+                    <h5 class="salary-title">Günlük Fiyat</h5>
+                    <i class="pi pi-wallet"></i> <span class="ml-5 dailyprice">{{detail.dailyPrice }}</span>
+                </div>
+                <hr>
+
+                <div class="rentdate ">
+                    <h5 class="salary-title">Aracı Alış/Bırakış Tarihi</h5>
+                    <p-calendar [(ngModel)]="rangeDates" (ngModelChange)="change($event)"
+                        (onSelect)="change(rangeDates)" [minDate]="minDate" [touchUI]="true" dateFormat="dd.mm.yy"
+                        [showIcon]="true" [showTime]="true" selectionMode="range" [readonlyInput]="true"
+                        inputId="range">
+                    </p-calendar>
+                </div>
+
+                <div class="rent-dailyprice" *ngIf="rentDailyLength">
+                    <hr>
+                    <h5 class="salary-title">Toplam Fiyat (KDV Dahil)</h5>
+                    <div *ngFor="let detail of details">
+                        <i class="pi pi-money-bill"></i> <span class="ml-5 dailyprice">{{detail.dailyPrice *
+                            rentDailyLength | vatAdded:0.20}}</span>
+                        <hr>
+                        <button class="btn btn-red mt-2 col-md-12" (click)="getRentalDateCheck(carId,rentDate,returnDate)">Satın Al</button>
+                    </div>
+                </div>
+
+            </div>
+
+
+        </div>
+    </div>
+</div>

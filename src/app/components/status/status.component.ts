@@ -6,6 +6,7 @@ import { Component, OnInit , EventEmitter , Output, Input } from '@angular/core'
 })
 export class StatusComponent implements OnInit {
   constructor() { }
+  
   ngOnInit(): void {
   }
 

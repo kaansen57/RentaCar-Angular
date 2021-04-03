@@ -1,0 +1,52 @@
+
+.container-fluid{
+    max-width:90%;
+}
+
+.free-cancel{
+    color:#4CAF50;
+    font-weight: 500;
+}
+.support{
+    float:left;
+    background-color:#4CAF50;
+    color:white;
+    padding:40px 30px;
+    width:40px;
+    height:50px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-size:15px;
+}
+.support i {
+    color:white;
+    background-color:#4CAF50;
+}
+
+
+.rent-dailyprice-wrapper > .rent-dailyprice i{
+    color:#4CAF50;
+    font-size:22px;
+}
+
+.rent-dailyprice-wrapper > .rent-dailyprice .dailyprice{
+    color:#474747;
+    font-size:30px;
+}
+.salary-title{
+    color:#7a7979;
+    font-size:18px;
+}
+
+.btn-red{
+    background-color:#D23B38;
+    color:white;
+}
+.btn-red:hover{
+    background-color:#a52826;
+    color:white;
+}
+.car-description h5{
+    font-weight: 300;
+}
