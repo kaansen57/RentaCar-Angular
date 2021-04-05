@@ -1,0 +1,8 @@
+<p-galleria [(value)]="images" [responsiveOptions]="responsiveOptions"
+    [containerStyle]="{'max-width': '460px', 'margin-top':'1em'}" [numVisible]="5" [circular]="true"
+    [showItemNavigators]="true" [showThumbnails]="false" 
+    [showIndicatorsOnItem]="true">
+    <ng-template pTemplate="item" let-image>
+        <img src="https://localhost:44383/{{image.imagePath}}" style="width: 100%; display: block;" />
+    </ng-template>
+</p-galleria>

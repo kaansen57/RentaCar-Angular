@@ -21,10 +21,10 @@ export class CarComponent implements OnInit {
   ) {}
 
   /*Data */
-  loading = false;
   cars: CarDto[] = [];
   filterText = '';
   filterBrand = '';
+  filterColor = '';
   images: Image[] = [];
   minPrice:number = 0;
   maxPrice:number = 1500;
@@ -34,7 +34,9 @@ export class CarComponent implements OnInit {
   getCarsAll() {
     this.carService.getAll().subscribe((response) => {
       this.cars = response.data;
-      this.loading = true;
+      console.log(this.cars);
+      console.log(this.cars);
+     
     });
   }
   
@@ -57,7 +59,6 @@ export class CarComponent implements OnInit {
   getCarBrandFiltered(brandId: number) {
     this.carService.getCarBrandFiltered(brandId).subscribe((response) => {
       this.cars = response.data;
-      this.loading = true;
     });
     this.carsInImageCheck();
   }
@@ -65,7 +66,6 @@ export class CarComponent implements OnInit {
   getCarColorFiltered(colorId: number) {
     this.carService.getCarColorFiltered(colorId).subscribe((response) => {
       this.cars = response.data;
-      this.loading = true;
     });
    this.carsInImageCheck();
   }

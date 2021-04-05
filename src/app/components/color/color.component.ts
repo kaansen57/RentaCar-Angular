@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, HostListener, Input, OnInit, Output } from '@angular/core';
+import {  Router } from '@angular/router';
 import { Color } from 'src/app/models/color/color';
 import { ColorService } from 'src/app/services/color.service';
 
@@ -8,19 +9,21 @@ import { ColorService } from 'src/app/services/color.service';
   styleUrls: ['./color.component.css'],
 })
 export class ColorComponent implements OnInit {
-  constructor(private colorService: ColorService) {}
+  constructor(private colorService: ColorService,private router: Router) {}
 
   colors: Color[];
-  currentColor: Color;
-  showColor: boolean = true;
+  @Output() filterColorChange = new EventEmitter<string>();
+  @Input() filterColor: string;
 
-  show() {
-    this.showColor = !this.showColor;
+  change(newValue:string) {
+    this.filterColor = newValue;
+    this.filterColorChange.emit(newValue);
   }
-  setColor(color: Color) {
-    this.currentColor = color;
+  
+  navigateTo(colorId:any){
+    this.router.navigate([`/cars/filters/colorId/${colorId.value}`]);
   }
-
+ 
   getAllColor() {
     this.colorService.getAll().subscribe((response) => {
       this.colors = response.data;

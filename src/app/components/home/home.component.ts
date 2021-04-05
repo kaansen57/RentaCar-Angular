@@ -9,7 +9,7 @@ import { ImageService } from 'src/app/services/image.service';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-  constructor() { }
+  constructor(private carService:CarService) { }
   startDate: Date;
   endDate: Date;
   rangeDates: Date[];
@@ -26,6 +26,9 @@ export class HomeComponent implements OnInit {
     console.log(dates[1]);
   }
 
+  getCarAll(){
+    this.carService.getAll();
+  }
   ngOnInit(): void {
   }
 }

@@ -11,12 +11,11 @@ export class RentalComponent implements OnInit {
 
   constructor(private rentalService:RentalService) { }
   rentals:RentalDto[] = [];
-  loading=false;
+
   getRentalDetail(){
-    this.rentalService.getRentalDetail().subscribe(response=>{
+    this.rentalService.getRentalDetail().subscribe((response)=>{
       this.rentals = response.data;
-      this.loading = true;
-    });
+    })
   }
   ngOnInit(): void {
    this.getRentalDetail();

@@ -1,37 +1,40 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Router } from '@angular/router';
 import { Brand } from 'src/app/models/brand/brand';
 import { BrandService } from 'src/app/services/brand.service';
 
 @Component({
   selector: 'app-brand',
   templateUrl: './brand.component.html',
-  styleUrls: ['./brand.component.css']
+  styleUrls: ['./brand.component.css'],
 })
 export class BrandComponent implements OnInit {
-
-  constructor(private brandService: BrandService) { }
+  constructor(private brandService: BrandService, private router: Router) {}
 
   //data
-  brands:Brand[]=[];
-  showBrand = true;
-  currentBrand:Brand;
+  brands: Brand[] = [];
+  @Output() filterBrandChange = new EventEmitter<string>();
+  @Input() filterBrand: string;
 
-  //Methods
-  setBrand(brand:Brand){
-    this.currentBrand = brand;
-    console.log(this.currentBrand);
+  change(newValue:string) {
+    this.filterBrand = newValue;
+    this.filterBrandChange.emit(newValue);
+  }
+  navigateTo(brandId: any) {
+    this.router.navigate([`/cars/filters/brandId/${brandId.value}`]);
   }
 
-  getBrandAll(){
-    this.brandService.getAll().subscribe(response=>{
-        this.brands = response.data;
-    })
+
+  getBrandAll() {
+    this.brandService.getAll().subscribe((response) => {
+      this.brands = response.data;
+    });
   }
-  show(){
-    this.showBrand = !this.showBrand;
-  }
+
+ 
+  
+  
   ngOnInit(): void {
     this.getBrandAll();
   }
-
 }

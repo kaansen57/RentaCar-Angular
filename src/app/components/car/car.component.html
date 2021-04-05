@@ -21,16 +21,16 @@
                     </p-accordionTab>
                 </p-accordion>
                 <app-price></app-price>
-                <app-brand></app-brand>
-                <app-color></app-color>
+                <app-brand [(filterBrand)]="filterBrand"></app-brand>
+                <app-color [(filterColor)]="filterColor"></app-color>
             </p-fieldset>
         </div>
         <div class="col-md-8">
             <app-filter-menu [(filterText)]="filterText"></app-filter-menu>
-            <p-dataView [value]="cars | filterPipe:filterText | priceFilter:rangeValues[0]:rangeValues[1]" [paginator]="true" [rows]="10">
+            <p-dataView [value]="cars | filterPipe:filterText | colorFilter:filterColor | brandFilter:filterBrand | priceFilter:rangeValues[0]:rangeValues[1]" [paginator]="true" [rows]="10">
                 <ng-template let-car pTemplate="listItem">
                     <div class="p-col-12">
-                        <div class="car-list-item" [routerLink]="['/car/detail/',car.carId]">
+                        <div class="car-list-item" [routerLink]="['/car/detail/',car.carId,car.carPropertyId]">
                             <img src="https://localhost:44383/{{imageFilter(car.carId)}}" [alt]="car.carName" />
                             <div class="car-list-detail">
                                 <div class="car-name"></div>

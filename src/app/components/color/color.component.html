@@ -1,12 +1,9 @@
-
-
 <p-accordion [multiple]="true">
   <p-accordionTab header="Renk">
-    <ul class="list-group">
-      <li role="button" routerLink="/cars/filters/colorId/{{color.colorId}}" (click)="setColor(color)"
-        class="list-group-item" [class.active]="currentColor==color" *ngFor="let color of colors;index as i;">
-        {{i+1}}-) {{color.colorName}}
-      </li>
-    </ul>
+    <input placeholder="Renk Ara" type="text" class="form-control" [(ngModel)]="filterColor" (ngModelChange)="change($event)">
+    <h5 class="salary-title text-center mt-2 mb-2">veya seçiniz</h5>
+    <select class="custom-select" (click)="navigateTo($event.target)" (change)="navigateTo($event.target)">
+      <option  *ngFor="let color of colors;index as i;" value="{{color.colorId}}" > {{i+1}}-) {{color.colorName}}</option>
+    </select>
   </p-accordionTab>
 </p-accordion>

@@ -1,0 +1,47 @@
+<app-status></app-status>
+<app-steps></app-steps>
+
+<div class="container-fluid mt-5 ">
+    <p-toast position="top-right"></p-toast>
+    <p-toast position="bottom-center" key="c" (onClose)="onReject()" [baseZIndex]="5000">
+        <ng-template let-message pTemplate="message">
+            <div class="p-flex p-flex-column" style="flex: 1">
+                <div class="p-text-center">
+                    <i class="pi pi-exclamation-triangle" style="font-size: 3rem"></i>
+                    <h4>{{message.summary}}</h4>
+                    <p>{{message.detail}}</p>
+                </div>
+                <div class="p-grid p-fluid">
+                    <div class="p-col-6">
+                        <button type="button" pButton (click)="onConfirm()" label="Yes" class="p-button-success"></button>
+                    </div>
+                    <div class="p-col-6">
+                        <button type="button" pButton (click)="onReject()" label="No" class="p-button-secondary"></button>
+                    </div>
+                </div>
+            </div>
+        </ng-template>
+    </p-toast>
+    <div class="row">
+        <div class="col-md-9 border">
+            <button class="btn btn-outline-danger mt-3 mb-5" routerLink="/driver-detail">Geri Dön</button>
+            <h5>Kredi Kartı Bilgileri</h5>
+            <div class="d-flex justify-content-center">
+                <form #creditCardForm="ngForm" (ngSubmit)="onSubmit(creditCardForm.value)">
+                    <input name="cardNumber" [(ngModel)]="cardNumber">
+                    <input name="expirationMonth" [(ngModel)]="expirationMonth">
+                    <input name="expirationYear" [(ngModel)]="expirationYear">
+                    <input name="cvv" [(ngModel)]="cvv">
+                    <input name="customerName" [(ngModel)]="customerName">
+                    <input name="customerSurname" [(ngModel)]="customerSurname">
+                    <button type="submit">Save</button>
+                </form>
+            </div>
+        </div>
+
+        <div class="split"></div>
+        <div class="col-md-3 p-3 border">
+
+        </div>
+    </div>
+</div>

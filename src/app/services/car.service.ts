@@ -14,6 +14,7 @@ export class CarService {
 /*Data*/
   baseURL: string = 'https://localhost:44383/api/cars/';
 
+  //localhost:44383/api/carproperty/detailsbyid?propId=1
 
 /*Methods */
   getAll(): Observable<ListResponseModel<CarDto>>{

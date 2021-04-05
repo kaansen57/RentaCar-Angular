@@ -1,17 +1,10 @@
-<!-- <div class="alert alert-danger font-weight-bold text-center " role="button" (click)="show()">
-  Markalar
-</div>
-<ul class="list-group" *ngIf="showBrand">
- 
-</ul> -->
 <p-accordion [multiple]="true">
   <p-accordionTab header="Araç Markası">
-    <ul class="list-group">
-      <li role="button" routerLink="/cars/filters/brandId/{{brand.brandId}}" (click)="setBrand(brand)"
-        class="list-group-item" [class.active]="currentBrand==brand" *ngFor="let brand of brands;index as i;">
-        {{i+1}}-) {{brand.brandName}}
-      </li>
-    </ul>
+    <input placeholder="Marka Ara" type="text" class="form-control" [(ngModel)]="filterBrand" (ngModelChange)="change($event)">
+    <h5 class="salary-title text-center mt-2 mb-2">veya seçiniz</h5>
+    <select class="custom-select" (click)="navigateTo($event.target)" (change)="navigateTo($event.target)">
+      <option  *ngFor="let brand of brands;index as i;" value="{{brand.brandId}}" > {{i+1}}-) {{brand.brandName}}</option>
+    </select>
   </p-accordionTab>
 </p-accordion>
 

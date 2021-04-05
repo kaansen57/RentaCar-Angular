@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {FormsModule} from '@angular/forms';
+import {FormsModule,ReactiveFormsModule} from '@angular/forms';
 
 //primeng modül
 import { DropdownModule } from 'primeng/dropdown';
@@ -16,8 +16,8 @@ import {SliderModule} from 'primeng/slider';
 import {GalleriaModule} from 'primeng/galleria';
 import {ToastModule} from 'primeng/toast';
 import {StepsModule} from 'primeng/steps';
-
-
+import {InputSwitchModule} from 'primeng/inputswitch';
+import {CarouselModule} from 'primeng/carousel';
 
 
 import { AppRoutingModule } from './app-routing.module';
@@ -36,6 +36,15 @@ import { PriceComponent } from './components/price/price.component';
 import { BrandFilterPipe } from './pipes/brand-filter.pipe';
 import { PriceFilterPipe } from './pipes/price-filter.pipe';
 import { FilterMenuComponent } from './components/filter-menu/filter-menu.component';
+import { PaymentComponent } from './components/payment/payment.component';
+import { DriverDetailComponent } from './components/driver-detail/driver-detail.component';
+import { StepsComponent } from './components/shared/steps/steps.component';
+import { GalleryComponent } from './components/gallery/gallery.component';
+import { RentalTermComponent } from './components/rental-term/rental-term.component';
+import { ColorFilterPipe } from './pipes/color-filter.pipe';
+import { CarAddComponent } from './components/admin-panel/car-add/car-add.component';
+import { ColorAddComponent } from './components/admin-panel/color-add/color-add.component';
+import { BrandAddComponent } from './components/admin-panel/brand-add/brand-add.component';
 
 
 @NgModule({
@@ -55,6 +64,15 @@ import { FilterMenuComponent } from './components/filter-menu/filter-menu.compon
     BrandFilterPipe,
     PriceFilterPipe,
     FilterMenuComponent,
+    PaymentComponent,
+    DriverDetailComponent,
+    StepsComponent,
+    GalleryComponent,
+    RentalTermComponent,
+    ColorFilterPipe,
+    CarAddComponent,
+    ColorAddComponent,
+    BrandAddComponent,
    
     
   ],
@@ -75,7 +93,9 @@ import { FilterMenuComponent } from './components/filter-menu/filter-menu.compon
     GalleriaModule ,
     ToastModule,
     StepsModule,
-    
+    InputSwitchModule,
+    CarouselModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent],

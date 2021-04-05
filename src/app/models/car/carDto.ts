@@ -8,4 +8,5 @@ export interface CarDto {
         imagePath:string;
         date:Date;
         dailyPrice:number;
+        carPropertyId:number;
 }

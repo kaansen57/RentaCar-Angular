@@ -1,6 +1,8 @@
 
+
 .container-fluid{
     max-width:90%;
+    background-color:#fff;
 }
 
 .free-cancel{
@@ -12,7 +14,7 @@
     background-color:#4CAF50;
     color:white;
     padding:40px 30px;
-    width:40px;
+    width:45px;
     height:50px;
     display:flex;
     justify-content:center;
@@ -34,12 +36,32 @@
     color:#474747;
     font-size:30px;
 }
+
+.rent-dailyprice-wrapper > .rent-dailyprice .dailyprice-card{
+    color:#fff;
+    font-size:40px;
+    border:3px dotted #fff;
+}
+
+.rent-dailyprice-wrapper > .rent-dailyprice .dailyprice-rentdaily{
+    color:#D23B38;
+    font-size:40px;
+    font-weight: 600;
+}
+
+
 .salary-title{
     color:#7a7979;
     font-size:18px;
 }
+.salary-title-card{
+    color:#fff;
+    font-size:18px;
+}
 
 .btn-red{
+    font-size:18px;
+    height:50px;
     background-color:#D23B38;
     color:white;
 }
@@ -50,3 +72,8 @@
 .car-description h5{
     font-weight: 300;
 }
+.car-property h5{
+    font-size:16px;
+}
+
+
