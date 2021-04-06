@@ -1,4 +1,5 @@
 import { Component, EventEmitter, OnInit, Output , Input } from '@angular/core';
+import { CarDto } from 'src/app/models/car/carDto';
 import { Image } from 'src/app/models/image/image';
 import { CarService } from 'src/app/services/car.service';
 import { ImageService } from 'src/app/services/image.service';
@@ -13,6 +14,8 @@ export class HomeComponent implements OnInit {
   startDate: Date;
   endDate: Date;
   rangeDates: Date[];
+
+  cars:CarDto[];
   changeDateEnd(e:Date){
     this.endDate = e;
     console.log(this.startDate);
@@ -27,7 +30,9 @@ export class HomeComponent implements OnInit {
   }
 
   getCarAll(){
-    this.carService.getAll();
+    this.carService.getAll().subscribe(response=>{
+        this.cars = response.data;
+    })
   }
   ngOnInit(): void {
   }

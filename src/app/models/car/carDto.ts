@@ -9,4 +9,5 @@ export interface CarDto {
         date:Date;
         dailyPrice:number;
         carPropertyId:number;
+        modelYear:string;
 }

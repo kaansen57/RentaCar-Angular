@@ -10,7 +10,8 @@ export class FilterPipePipe implements PipeTransform {
     return filterText?value
           .filter(
           (car: CarDto) =>
-           car.carName.toLocaleLowerCase().indexOf(filterText) !== -1) 
+           car.carName.toLocaleLowerCase().indexOf(filterText) !== -1)
           :value;
   }
+  
 }

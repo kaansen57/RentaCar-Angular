@@ -1,14 +1,99 @@
 button {
-    min-width: 10rem;
-    margin-right: .5rem;
+  min-width: 10rem;
+  margin-right: 0.5rem;
 }
 
 @media screen and (max-width: 960px) {
-    button {
-        width: 100%;
-        margin-bottom: .5rem;
-    }
+  button {
+    width: 100%;
+    margin-bottom: 0.5rem;
+  }
 }
 
+.credit-card-wrapper  {
+  background-image: url("/assets/card1.jpeg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  min-height: 250px;
+  border-radius: 20px;
+  position: relative;
+  text-align: center;
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
+}
+.credit-card-wrapper:hover{
+  transition:all 1s ease;
+  transform: rotateY(180deg);
+}
 
+.credit-card-front , .credit-card-back{
+  position: absolute;
+  width: 90%;
+  height: 100%;
+  -webkit-backface-visibility: hidden; /* Safari */
+  backface-visibility: hidden;
+}
+
+.credit-card-front{
+  transform:rotateY(0);
+}
+.credit-card-back{
+  transform:rotateY(-180deg);
+}
+.card-chip {
+    background-image: url("/assets/chip.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+    min-height: 40px;
+    max-height: 60px;
+}
+
+.card-type {
+    background-image: url("/assets/mastercard.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+    min-height: 40px;
+    max-height: 60px;
+}
+.card-number{
+    color:#fff;
+    font-size:30px;
+}
+.card-name , .card-expiration{
+  color:#fff;
+  font-size:18px;
+  font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+.card-expiration span{
+  color:#fff;
+  font-size:12px;
+  font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+.card-stripe{
+  background-color: rgba(0, 0, 0, 0.568);
+  height:50px;
  
+}
+.cvv-stripe{
+  background-color: rgb(255, 255, 255);
+  height:40px;
+  border-radius: 10px;
+}
+.cvv-title{
+  font-size:14px;
+  color:#fff;
+}
+
+.btn-red{
+  background-color: #D23B38;
+  color:#fff;
+  width:30%;
+  height:50px;
+}
+.btn-red:hover{
+  background-color: #b32826;
+}
+.card-input-title{
+  
+}

@@ -13,35 +13,135 @@
                 </div>
                 <div class="p-grid p-fluid">
                     <div class="p-col-6">
-                        <button type="button" pButton (click)="onConfirm()" label="Yes" class="p-button-success"></button>
+                        <button type="button" pButton (click)="onConfirm()" label="Yes"
+                            class="p-button-success"></button>
                     </div>
                     <div class="p-col-6">
-                        <button type="button" pButton (click)="onReject()" label="No" class="p-button-secondary"></button>
+                        <button type="button" pButton (click)="onReject()" label="No"
+                            class="p-button-secondary"></button>
                     </div>
                 </div>
             </div>
         </ng-template>
     </p-toast>
     <div class="row">
-        <div class="col-md-9 border">
+        <div class="col-md-8 border">
             <button class="btn btn-outline-danger mt-3 mb-5" routerLink="/driver-detail">Geri Dön</button>
             <h5>Kredi Kartı Bilgileri</h5>
-            <div class="d-flex justify-content-center">
-                <form #creditCardForm="ngForm" (ngSubmit)="onSubmit(creditCardForm.value)">
-                    <input name="cardNumber" [(ngModel)]="cardNumber">
-                    <input name="expirationMonth" [(ngModel)]="expirationMonth">
-                    <input name="expirationYear" [(ngModel)]="expirationYear">
-                    <input name="cvv" [(ngModel)]="cvv">
-                    <input name="customerName" [(ngModel)]="customerName">
-                    <input name="customerSurname" [(ngModel)]="customerSurname">
-                    <button type="submit">Save</button>
-                </form>
+            <div class="row d-flex justify-content-center p-4">
+                <!-- <div class="col-md-5 p-4 border credit-card-wrapper">
+                    <div class="credit-card-inner">
+                        <div class="credit-card-front">
+                            <div class="row d-flex justify-content-between">
+                                <div class="col-md-2 ml-2 card-chip"> </div>
+                                <div class="col-md-2 card-type"></div>
+                            </div>
+                            <div class="row d-flex justify-content-center  mt-5 mb-4">
+                                <div class="col-md-12">
+                                    <h5 class="text-center card-number"> {{cardNumber | creditCard}}</h5>
+                                </div>
+                            </div>
+                            <div class="row ">
+                                <div class="col-md-6 text-left">
+                                    <h5 class=" card-name mt-3"> {{customerName}} {{customerSurname}}</h5>
+                                </div>
+                                <div class="col-md-6 text-right">
+                                    <h5 class=" card-expiration"> <span>VALİD THRU</span></h5>
+                                    <h5 class=" card-expiration"> {{expirationMonth}} / {{expirationYear}} </h5>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="credit-card-back">
+                            <div class="row ">
+                                <div class="col-md-12 mb-5 card-stripe"></div>
+                            </div>
+                            <div class="row  d-flex justify-content-center">
+                                <div class="col-md-12">
+                                    <h5 class="cvv-title text-right">CVV</h5>
+                                    <div class="cvv-stripe text-right p-2"> {{cvv}} </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div> -->
+                <!-- iinputlar -->
+                    <form class="" #creditCardForm="ngForm" (ngSubmit)="onSubmit(creditCardForm.value)">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="card-input-title mb-3"> Kart Üzerindeki Ad Soyad  </div>
+                                <div> <input class="form-control" type="text" name="customerName" [(ngModel)]="customerName">  </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="card-input-title mb-3"> Kart Numarası  </div>
+                                <div> <input class="form-control" type="text" max-length="16" name="cardNumber" [(ngModel)]="cardNumber">  </div>
+                            </div>
+                          
+                            <div class="col-md-6 mt-4">
+                                <div class="card-input-title mb-3"> Son Kullanma Tarihi</div>
+                               <div class="row">
+                                <div class="col-md-6"> 
+                                    <input class="form-control" type="month" min="2021-04" max="2100-12" name="expirationMonth" [(ngModel)]="expirationMonth "> 
+                                </div>
+                                <div class="col-md-6"> 
+                                    <input class="form-control" type="year" name="expirationYear" [(ngModel)]="expirationYear">  
+                                </div>
+                               </div>
+                            </div>
+                            <div class="col-md-6 mt-4">
+                                <div class="card-input-title mb-3"> CVV </div>
+                                <div> <input class="form-control" type="text" name="cvv" [(ngModel)]="cvv">  </div>
+                            </div>
+                            <div class="col-md-12 text-center mt-4">
+                                <button class="btn btn-red">Ödemeyi Tamamla</button>
+                            </div>
+                        </div>
+                     
+                    </form>
             </div>
         </div>
-
-        <div class="split"></div>
-        <div class="col-md-3 p-3 border">
-
+        <div class="col-md-4 p-3 border">
+            <h5>Kart Önizleme</h5>
+            <hr>
+            <div class="col-md-12 p-4 border credit-card-wrapper">
+                <div class="credit-card-inner">
+                    <div class="credit-card-front">
+                        <div class="row d-flex justify-content-between">
+                            <div class="col-md-2 ml-2 card-chip"> </div>
+                            <div class="col-md-2 card-type"></div>
+                        </div>
+                        <div class="row d-flex justify-content-center  mt-5 mb-4">
+                            <div class="col-md-12">
+                                <!-- <h5 class="text-center card-number mt-5">1234 5678 9999 1111</h5>   -->
+                                <h5 class="text-center card-number"> {{cardNumber | creditCard}}</h5>
+                            </div>
+                        </div>
+                        <div class="row ">
+                            <div class="col-md-6 text-left">
+                                <h5 class=" card-name mt-3"> {{customerName}} {{customerSurname}}</h5>
+                            </div>
+                            <div class="col-md-6 text-right">
+                                <h5 class=" card-expiration"> <span>VALİD THRU</span></h5>
+                                <h5 class=" card-expiration"> {{expirationMonth}} / {{expirationYear}} </h5>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="credit-card-back">
+                        <div class="row ">
+                            <div class="col-md-12 mb-5 card-stripe"></div>
+                        </div>
+                        <div class="row d-flex justify-content-center">
+                            <div class="col-md-12">
+                                <h5 class="cvv-title text-right">CVV</h5>
+                                <div class="cvv-stripe text-right p-2"> {{cvv}} </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-12 mt-3 text-center">
+                <button class="btn  btn-outline-success" readonly="true">3D Güvenli Alışveriş</button>
+                <button class="btn btn-outline-danger" readonly="true">3D Güvenli Alışveriş</button>
+            </div>
         </div>
     </div>
 </div>

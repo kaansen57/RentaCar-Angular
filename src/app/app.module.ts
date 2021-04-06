@@ -19,7 +19,6 @@ import {StepsModule} from 'primeng/steps';
 import {InputSwitchModule} from 'primeng/inputswitch';
 import {CarouselModule} from 'primeng/carousel';
 
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CarComponent } from './components/car/car.component';
@@ -45,6 +44,7 @@ import { ColorFilterPipe } from './pipes/color-filter.pipe';
 import { CarAddComponent } from './components/admin-panel/car-add/car-add.component';
 import { ColorAddComponent } from './components/admin-panel/color-add/color-add.component';
 import { BrandAddComponent } from './components/admin-panel/brand-add/brand-add.component';
+import { CreditCardPipe } from './pipes/credit-card.pipe';
 
 
 @NgModule({
@@ -73,6 +73,7 @@ import { BrandAddComponent } from './components/admin-panel/brand-add/brand-add.
     CarAddComponent,
     ColorAddComponent,
     BrandAddComponent,
+    CreditCardPipe,
    
     
   ],
@@ -95,7 +96,8 @@ import { BrandAddComponent } from './components/admin-panel/brand-add/brand-add.
     StepsModule,
     InputSwitchModule,
     CarouselModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+   
   ],
   providers: [],
   bootstrap: [AppComponent],

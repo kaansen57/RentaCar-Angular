@@ -15,7 +15,6 @@
                         <label for="range">Aracı Alış/Bırakış</label>
                         <p-calendar [(ngModel)]="rangeDates" (onSelect)="change(rangeDates)" dateFormat="dd.mm.yy" selectionMode="range"
                             [readonlyInput]="true" inputId="range"></p-calendar>
-                        {{rentDate  }}
                     </div>
                     <div class="col-md-12 mt-4">
                         <a routerLink="/cars" type="button" class="btn btn-success">Araçları Ara</a>

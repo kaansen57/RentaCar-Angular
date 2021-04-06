@@ -18,7 +18,7 @@ export class PaymentComponent implements OnInit {
 
   creditCardInformation: CreditCard;
   id: number;
-  cardNumber: string;
+  cardNumber: string = "#### #### #### ####";
   expirationMonth: string;
   expirationYear: string;
   cvv: string;
