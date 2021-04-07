@@ -13,8 +13,14 @@ export class CarPropertyService {
   /*Data*/
   baseURL: string = 'https://localhost:44383/api/carproperty/';
 
+  // Method
   getPropertyDetailsById(propId:number): Observable<ListResponseModel<CarPropertyDto>>{
     let newURL = this.baseURL + "detailsbyid?propId=" + propId;
     return this.httpClient.get<ListResponseModel<CarPropertyDto>>(newURL);
   }
+  getPropertyAll(): Observable<ListResponseModel<CarPropertyDto>>{
+    let newURL = this.baseURL + "details" ;
+    return this.httpClient.get<ListResponseModel<CarPropertyDto>>(newURL);
+  }
+  
 }

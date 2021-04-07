@@ -28,5 +28,9 @@ export class RentalService {
     let newURL = `${this.baseURL}rentalcheck?carId=${carId}&rentDate=${rentDate}&returnDate=${returnDate}`;
     return this.httpClient.get<ListResponseModel<Rental>>(newURL);
   }
+  rentalAdd(rental:Rental){
+    let newURL =`${this.baseURL}addrental`;
+    return this.httpClient.post<ListResponseModel<Rental>>(newURL,rental);
+  }
  
 }

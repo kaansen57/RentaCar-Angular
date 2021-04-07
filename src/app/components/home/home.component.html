@@ -13,8 +13,8 @@
                 <div class="pt-4 pb-4 d-flex flex-wrap justify-content-center ">
                     <div class="col-md-6">
                         <label for="range">Aracı Alış/Bırakış</label>
-                        <p-calendar [(ngModel)]="rangeDates" (onSelect)="change(rangeDates)" dateFormat="dd.mm.yy" selectionMode="range"
-                            [readonlyInput]="true" inputId="range"></p-calendar>
+                        <p-calendar [(ngModel)]="rangeDates" (onSelect)="change(rangeDates)" dateFormat="dd.mm.yy"
+                            selectionMode="range" [readonlyInput]="true" inputId="range"></p-calendar>
                     </div>
                     <div class="col-md-12 mt-4">
                         <a routerLink="/cars" type="button" class="btn btn-success">Araçları Ara</a>
@@ -23,7 +23,30 @@
             </div>
         </div>
     </div>
-    <!-- <label for="startDate">Aracı Alış</label>
+</div>
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-12">
+         <p-carousel [value]="cars" [autoplayInterval]="3000" [circular]="true" [numVisible]="3">
+             <ng-template pTemplate="header">
+                 <h2 class="text-center mb-4">Araçlarımız</h2>
+                 <hr>
+             </ng-template>
+                 <ng-template let-car pTemplate="item">
+                     <div role="button" class="card ml-3 mr-3 p-3" routerLink="/car/detail/{{car.carId}}/{{car.carPropertyId}}">
+                         <img src="https://localhost:44383/{{imageFilter(car.carId)}}" width="250">
+                       
+                         <div class="card-body">
+                             <h5 class="card-title">{{car.carName}}</h5>
+                         </div>
+                     </div>
+                 </ng-template>
+         </p-carousel>
+        </div>
+     </div>
+</div>
+<app-footer></app-footer>
+<!-- <label for="startDate">Aracı Alış</label>
     <p-calendar (ngModel)="startDate" (ngModelChange)="changeDateEnd($event)" [readonlyInput]="true"
         [showIcon]="true" [showTime]="true" inputId="startDate"></p-calendar>
 </div>

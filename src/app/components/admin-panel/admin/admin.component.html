@@ -1,0 +1,63 @@
+<app-status></app-status>
+<div class="container-fluid ">
+    <div class="row">
+        <div class="col-md-3 border p-3 sidebar-wrapper">
+            <app-admin-sidebar></app-admin-sidebar>
+        </div>
+        <div class="col-md-9">
+            <div class="row mt-3">
+                <div class="col-md-12">
+                    <h5>İstatistikler</h5>
+                </div>
+            </div>
+            <hr>
+            <div class="row mt-5 d-flex justify-content-around">
+                <div class="col-md-3  mt-3 mr-3 p-4 admin-totals-div total-cars" routerLink="/cars">
+                    <div class="row">
+                        <div class="col-md-3 d-flex align-items-center">
+                            <img src="../assets/icons/navi-car.svg"  width="30">
+                        </div>
+                        <div class="col-md-9">
+                            <h5>Arabalar</h5>
+                            <div>Toplam : {{carLength}}</div>
+                        </div>
+                    </div>
+                    
+                </div>
+                <div class="col-md-3  mt-3 mr-3 admin-totals-div p-4 total-brands" routerLink="/">
+                     <div class="row">
+                        <div class="col-md-3 d-flex align-items-center">
+                            <img src="../assets/icons/brand.svg"  width="30">
+                        </div>
+                        <div class="col-md-9">
+                            <h5>Markalar</h5>
+                            <div>Toplam : {{brandLength}}</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3  mt-3 mr-3 admin-totals-div p-4 total-colors"  routerLink="/">
+                    <div class="row">
+                        <div class="col-md-3 d-flex align-items-center">
+                            <img src="../assets/icons/palette.svg"  width="30">
+                        </div>
+                        <div class="col-md-9">
+                            <h5>Renkler</h5>
+                            <div>Toplam : {{colorLength}}</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3  mt-3 mr-3 admin-totals-div p-4 total-rental" routerLink="/rental">
+                    <div class="row">
+                        <div class="col-md-3 d-flex align-items-center">
+                            <img src="../assets/icons/navi-car.svg"  width="30">
+                        </div>
+                        <div class="col-md-9">
+                            <h5>Kiralanmış Araçlar</h5>
+                            <div>Toplam : {{rentalLength}}</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -10,12 +10,13 @@ import { ImageService } from 'src/app/services/image.service';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-  constructor(private carService:CarService) { }
+  constructor(private carService:CarService,private imageService:ImageService) { }
   startDate: Date;
   endDate: Date;
   rangeDates: Date[];
-
+  images:Image[];
   cars:CarDto[];
+
   changeDateEnd(e:Date){
     this.endDate = e;
     console.log(this.startDate);
@@ -29,11 +30,30 @@ export class HomeComponent implements OnInit {
     console.log(dates[1]);
   }
 
+  imageFilter(carId:number){
+    let show = this.images.find(x=>x.carId === carId);
+    if (show) {
+        return show.imagePath;
+    }
+    else{
+      return "/Uploads/default.png";
+    }
+  }
+  getCarImageAll() {
+    this.imageService.getCarImageAll().subscribe((response) => {
+      //data district 
+      this.images =  response.data.filter((value, index, self) => self.findIndex((m) => m.carId === value.carId ) === index);
+    });
+  }
+  
   getCarAll(){
     this.carService.getAll().subscribe(response=>{
         this.cars = response.data;
+        console.log(this.cars);
     })
   }
   ngOnInit(): void {
+    this.getCarAll();
+    this.getCarImageAll();
   }
 }

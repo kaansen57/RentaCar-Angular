@@ -1,0 +1,11 @@
+.sidebar-wrapper{
+    background:#fff;
+}
+
+.admin-totals-div{
+    background: #fff;
+    border:10px solid #ee6b69;
+    color:#333;
+    border-radius: 10px;
+    cursor:pointer;
+}

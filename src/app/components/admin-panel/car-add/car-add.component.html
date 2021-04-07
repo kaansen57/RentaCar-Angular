@@ -1,1 +1,65 @@
-<p>car-add works!</p>
+<app-status></app-status>
+<div class="container-fluid">
+    <p-toast position="top-right" key="error"></p-toast>
+    <p-toast position="top-right" key="success"></p-toast>
+    <div class="row">
+        <div class="col-md-3 border p-3 sidebar-wrapper">
+            <app-admin-sidebar></app-admin-sidebar>
+        </div>
+        <div class="col-md-9 p-4">
+            <div class="row">
+                <div class="col-md-12">
+                    <h5>Araba Ekle</h5>
+                </div>
+            </div>
+            <hr>
+            <div class="row">
+                <div class="col-md-6">
+                    <form [formGroup]="carAddForm">
+                        <div class="form-group">
+                            <label for="carName">Arabanın Modeli</label>
+                            <input class="form-control" type="text" formControlName="carName">
+                        </div>
+                        <div class="form-group">
+                            <label for="brandId">Marka</label>
+                            <select class="form-control" formControlName="brandId">
+                                <option [value]="brand.brandId" *ngFor="let brand of brands"> {{brand.brandName}}
+                                </option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="colorId">Renk</label>
+                            <select class="form-control" formControlName="colorId">
+                                <option [value]="color.colorId" *ngFor="let color of colors"> {{color.colorName}}
+                                </option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="modelYear">Model Yılı</label>
+                            <input class="form-control" type="number" formControlName="modelYear">
+                        </div>
+                        <div class="form-group">
+                            <label for="dailyPrice">Günlük Fiyatı</label>
+                            <input class="form-control" type="number" formControlName="dailyPrice">
+                        </div>
+                        <div class="form-group">
+                            <label for="description">Açıklama (opsiyonel) </label>
+                            <textarea class="form-control" formControlName="description"> </textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="carProperty">Araç Özellikleri</label>
+                            <select class="form-control" formControlName="carProperty">
+                                <option value="{{property.id}}" *ngFor="let property of properties">
+                                   Yakıt: {{property.fuelName}} - Vites : {{property.gearName}} - Sınıfı : {{property.carClassName}}
+                                 </option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <button class="btn btn-success" (click)="carAdd()">Araba Ekle</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

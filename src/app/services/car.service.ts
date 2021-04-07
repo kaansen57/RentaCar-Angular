@@ -1,9 +1,10 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Car } from '../models/car/car';
 import { CarDto } from '../models/car/carDto';
 import { ListResponseModel } from '../models/listResponseModel';
+import { ResponseModel } from '../models/responseModel';
 
 @Injectable({
   providedIn: 'root'
@@ -14,9 +15,7 @@ export class CarService {
 /*Data*/
   baseURL: string = 'https://localhost:44383/api/cars/';
 
-  //localhost:44383/api/carproperty/detailsbyid?propId=1
-
-/*Methods */
+/*Methods GET */
   getAll(): Observable<ListResponseModel<CarDto>>{
     let newURL = this.baseURL + "details";
     return this.httpClient.get<ListResponseModel<CarDto>>(newURL);
@@ -37,6 +36,10 @@ export class CarService {
     let newURL = `${this.baseURL}getpricefilter?min=${min}&max=${max}`;
     return this.httpClient.get<ListResponseModel<CarDto>>(newURL);
   }
- 
   
+  /*Methods POST */
+  carAdd(car:Car){
+    let newURL = this.baseURL + "add";
+    return this.httpClient.post(newURL,car,{responseType: 'text'});
+  }
 }

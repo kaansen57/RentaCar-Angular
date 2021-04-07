@@ -35,7 +35,7 @@ export class DetailComponent implements OnInit {
   rentDate: any;
   returnDate: any;
   carProperty: CarPropertyDto[];
-
+  propId:number;
   change(dates: Date[]) {
     const convertedDate = moment(dates[0]);
     const convertedDate2 = moment(dates[1]);
@@ -67,7 +67,7 @@ export class DetailComponent implements OnInit {
     this.rentalService.getRentalCheck(carId, rentDate, returnDate).subscribe(
       (response) => {
         if (response.success) {
-          this.router.navigate([`/driver-detail/${this.carId}`]);
+          this.router.navigate([`/payment/${this.carId}/${this.propId}/${this.rentDate}/${this.returnDate}`]);
         }
       },
       (err) => {
@@ -119,11 +119,11 @@ export class DetailComponent implements OnInit {
     this.steps();
     this.activatedRoute.params.subscribe((params) => {
       if (params['carId'] && params['propId']) {
-       
         this.getCarDetail(params['carId']);
         this.getRentalDate(params['carId']);
         this.getPropertyDetailsById(params['propId']);
         this.carId = params['carId'];
+        this.propId = params['propId'];
       }
     });
   }

@@ -10,6 +10,10 @@ button {
   }
 }
 
+.container-fluid{
+  max-width:95%;
+  background-color:#fff;
+}
 .credit-card-wrapper  {
   background-image: url("/assets/card1.jpeg");
   background-repeat: no-repeat;
@@ -94,6 +98,13 @@ button {
 .btn-red:hover{
   background-color: #b32826;
 }
-.card-input-title{
-  
+
+.saved-cards{
+  border:10px solid #8FC692;
+  background-color:#4CAF50;
+  color:#fff;
+}
+.saved-card-number{
+  border-radius: 10px;
+  border:2px solid silver;
 }

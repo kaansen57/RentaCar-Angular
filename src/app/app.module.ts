@@ -45,6 +45,10 @@ import { CarAddComponent } from './components/admin-panel/car-add/car-add.compon
 import { ColorAddComponent } from './components/admin-panel/color-add/color-add.component';
 import { BrandAddComponent } from './components/admin-panel/brand-add/brand-add.component';
 import { CreditCardPipe } from './pipes/credit-card.pipe';
+import { PaymentSuccessComponent } from './components/payment-success/payment-success.component';
+import { FooterComponent } from './components/shared/footer/footer.component';
+import { AdminComponent } from './components/admin-panel/admin/admin.component';
+import { AdminSidebarComponent } from './components/admin-panel/shared/admin-sidebar/admin-sidebar.component';
 
 
 @NgModule({
@@ -74,6 +78,10 @@ import { CreditCardPipe } from './pipes/credit-card.pipe';
     ColorAddComponent,
     BrandAddComponent,
     CreditCardPipe,
+    PaymentSuccessComponent,
+    FooterComponent,
+    AdminComponent,
+    AdminSidebarComponent,
    
     
   ],

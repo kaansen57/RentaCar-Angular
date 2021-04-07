@@ -1,0 +1,26 @@
+.row{
+    margin:0;
+    padding:0;
+    background:#333;
+}
+.logo{
+    font-size:40px;
+    color:#D23B38;
+    font-family: 'Pacifico', cursive;
+}
+a{
+    text-decoration: none;
+}
+
+h5{
+    font-size:18px;
+    color:#fff;
+}
+ul {
+    list-style-type: none;
+}
+ul li{
+    font-size:16px;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color:#fff;
+}

@@ -18,12 +18,12 @@ export class StepsComponent implements OnInit {
         routerLink: 'car/detail',
       },
       {
-        label: 'Sürücü Bilgileri',
-        routerLink: `/driver-detail`,
-      },
-      {
         label: 'Ödeme Bilgileri',
         routerLink: '/payment',
+      },
+      {
+        label: 'Ödeme Onayı',
+        routerLink: '/payment-success',
       }
     ];
   }
