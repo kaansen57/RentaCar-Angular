@@ -14,7 +14,7 @@
             </div>
             <hr>
             <div class="row">
-                <div class="col-md-6">
+                <!-- <div class="col-md-4 border">
                     <form [formGroup]="carAddForm">
                         <div class="form-group">
                             <label for="carName">Arabanın Modeli</label>
@@ -50,16 +50,162 @@
                             <label for="carProperty">Araç Özellikleri</label>
                             <select class="form-control" formControlName="carProperty">
                                 <option value="{{property.id}}" *ngFor="let property of properties">
-                                   Yakıt: {{property.fuelName}} - Vites : {{property.gearName}} - Sınıfı : {{property.carClassName}}
-                                 </option>
+                                    Yakıt: {{property.fuelName}} - Vites : {{property.gearName}} - Sınıfı :
+                                    {{property.carClassName}}
+                                </option>
                             </select>
                         </div>
                         <div class="form-group">
                             <button class="btn btn-success" (click)="carAdd()">Araba Ekle</button>
                         </div>
                     </form>
+                </div> -->
+                <div class="col-md-12 ">
+
+                    <div class="card">
+                        <p-toolbar styleClass="p-mb-4">
+                            <ng-template pTemplate="left">
+                                <button pButton pRipple label="Yeni Kayıt" icon="pi pi-plus"
+                                    class="p-button-success p-mr-2" (click)="carDialogShow()"></button>
+                            </ng-template>
+                        </p-toolbar>
+                        <p-table [value]="cars" [paginator]="true" [rows]="10" [showCurrentPageReport]="true"
+                            [rowHover]="true" dataKey="id"
+                            currentPageReportTemplate=" Toplam Araç Sayısı : {totalRecords} "
+                            [rowsPerPageOptions]="[10,25,50]">
+                            <ng-template pTemplate="header">
+                                <tr>
+                                    <th style="width: 3rem">
+                                        <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
+                                    </th>
+                                    <th>Model</th>
+                                    <th>Marka</th>
+                                    <th>Renk</th>
+                                    <th>Günlük Fiyat</th>
+                                    <th>İşlemler</th>
+                                </tr>
+                            </ng-template>
+                            <ng-template pTemplate="body" let-car>
+                                <tr>
+                                    <td>
+                                        <p-tableCheckbox [value]="car"></p-tableCheckbox>
+                                    </td>
+                                    <td>{{car.carName}}</td>
+                                    <td>{{car.brandName}}</td>
+                                    <td>{{car.colorName}}</td>
+                                    <td>{{car.dailyPrice}}</td>
+                                    <td class="text-center">
+                                        <button pButton pRipple icon="pi pi-pencil"
+                                            class="p-button-rounded p-button-warning mr-2"
+                                            (click)="editCar(car)"></button>
+                                        <button pButton pRipple icon="pi pi-trash"
+                                            class="p-button-rounded p-button-danger" (click)="deleteCar(car)"></button>
+                                    </td>
+                                </tr>
+                            </ng-template>
+                        </p-table>
+                        <p-dialog [(visible)]="carDialog" [style]="{width: '450px'}" [header]="carShow ? 'Araç Ekle' : 'Araç Düzenle'" [modal]="true"
+                            styleClass="p-fluid"> 
+                            <form [formGroup]="carAddForm" *ngIf="carShow">
+                                <div class="form-group">
+                                    <label for="carName">Arabanın Modeli</label>
+                                    <input class="form-control" type="text" formControlName="carName">
+                                </div>
+                                <div class="form-group">
+                                    <label for="brandId">Marka</label>
+                                    <select class="form-control" formControlName="brandId">
+                                        <option [value]="brand.brandId" *ngFor="let brand of brands">
+                                            {{brand.brandName}}
+                                        </option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="colorId">Renk</label>
+                                    <select class="form-control" formControlName="colorId">
+                                        <option [value]="color.colorId" *ngFor="let color of colors">
+                                            {{color.colorName}}
+                                        </option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="modelYear">Model Yılı</label>
+                                    <input class="form-control" type="number" formControlName="modelYear">
+                                </div>
+                                <div class="form-group">
+                                    <label for="dailyPrice">Günlük Fiyatı</label>
+                                    <input class="form-control" type="number" formControlName="dailyPrice">
+                                </div>
+                                <div class="form-group">
+                                    <label for="description">Açıklama (opsiyonel) </label>
+                                    <textarea class="form-control" formControlName="description"> </textarea>
+                                </div>
+                                <div class="form-group">
+                                    <label for="carProperty">Araç Özellikleri</label>
+                                    <select class="form-control" formControlName="carProperty">
+                                        <option value="{{property.id}}" *ngFor="let property of properties">
+                                            Yakıt: {{property.fuelName}} - Vites : {{property.gearName}} - Sınıfı :
+                                            {{property.carClassName}}
+                                        </option>
+                                    </select>
+                                </div>
+                            </form>
+
+                            <form [formGroup]="carUpdateForm" *ngIf="editShow">
+                                <div class="form-group">
+                                    <label for="id">id</label>
+                                    <input class="form-control" readonly type="text" formControlName="id">
+                                </div>
+                                <div class="form-group">
+                                    <label for="carName">Arabanın Modeli</label>
+                                    <input class="form-control" type="text" formControlName="carName">
+                                </div>
+                                <div class="form-group">
+                                    <label for="brandId">Marka</label>
+                                    <select class="form-control" formControlName="brandId">
+                                        <option [value]="brand.brandId" *ngFor="let brand of brands">
+                                            {{brand.brandName}}
+                                        </option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="colorId">Renk</label>
+                                    <select class="form-control" formControlName="colorId">
+                                        <option [value]="color.colorId" *ngFor="let color of colors">
+                                            {{color.colorName}}
+                                        </option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="modelYear">Model Yılı</label>
+                                    <input class="form-control" type="number" formControlName="modelYear">
+                                </div>
+                                <div class="form-group">
+                                    <label for="dailyPrice">Günlük Fiyatı</label>
+                                    <input class="form-control" type="number" formControlName="dailyPrice">
+                                </div>
+                                <div class="form-group">
+                                    <label for="description">Açıklama (opsiyonel) </label>
+                                    <textarea class="form-control" formControlName="description"> </textarea>
+                                </div>
+                                <div class="form-group">
+                                    <label for="carProperty">Araç Özellikleri</label>
+                                    <select class="form-control" formControlName="carProperty">
+                                        <option value="{{property.id}}" *ngFor="let property of properties">
+                                            Yakıt: {{property.fuelName}} - Vites : {{property.gearName}} - Sınıfı :
+                                            {{property.carClassName}}
+                                        </option>
+                                    </select>
+                                </div>
+                            </form>
+                            <ng-template pTemplate="footer">
+                                <button pButton pRipple label="Güncelle" icon="pi pi-check" class="p-button-text"
+                                    (click)="updateCar()" *ngIf="editShow"></button>
+                                <button pButton pRipple label="Kayıt Et" icon="pi pi-check" class="p-button-text"
+                                    (click)="carAdd()" *ngIf="carShow"></button>
+                            </ng-template>
+                        </p-dialog>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>

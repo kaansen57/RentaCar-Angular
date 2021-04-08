@@ -69,7 +69,7 @@ export class CarComponent implements OnInit {
   carsInImageCheck(){
     this.cars.forEach(x=>{
       this.images.forEach(y=>{
-        if (x.carId === y.carId) {
+        if (x.id === y.carId) {
             x.imagePath = y.imagePath
             x.date = y.date
         }

@@ -30,8 +30,8 @@
             <p-dataView [value]="cars | filterPipe:filterText | colorFilter:filterColor | brandFilter:filterBrand | priceFilter:rangeValues[0]:rangeValues[1]" [paginator]="true" [rows]="10">
                 <ng-template let-car pTemplate="listItem">
                     <div class="p-col-12">
-                        <div class="car-list-item" [routerLink]="['/car/detail/',car.carId,car.carPropertyId]">
-                            <img src="https://localhost:44383/{{imageFilter(car.carId)}}" [alt]="car.carName" />
+                        <div class="car-list-item" [routerLink]="['/car/detail/',car.id,car.carPropertyId]">
+                            <img src="https://localhost:44383/{{imageFilter(car.id)}}" [alt]="car.carName" />
                             <div class="car-list-detail">
                                 <div class="car-name"></div>
                                 <div class="car-name">{{car.carName}}</div>

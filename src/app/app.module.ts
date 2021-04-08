@@ -18,6 +18,10 @@ import {ToastModule} from 'primeng/toast';
 import {StepsModule} from 'primeng/steps';
 import {InputSwitchModule} from 'primeng/inputswitch';
 import {CarouselModule} from 'primeng/carousel';
+import {TableModule} from 'primeng/table';
+import {ToolbarModule} from 'primeng/toolbar';
+import {DialogModule} from 'primeng/dialog';
+
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -82,8 +86,6 @@ import { AdminSidebarComponent } from './components/admin-panel/shared/admin-sid
     FooterComponent,
     AdminComponent,
     AdminSidebarComponent,
-   
-    
   ],
   imports: [
     BrowserModule,
@@ -105,7 +107,9 @@ import { AdminSidebarComponent } from './components/admin-panel/shared/admin-sid
     InputSwitchModule,
     CarouselModule,
     ReactiveFormsModule,
-   
+    TableModule,
+    ToolbarModule,
+    DialogModule
   ],
   providers: [],
   bootstrap: [AppComponent],

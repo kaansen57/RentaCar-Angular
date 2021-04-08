@@ -20,6 +20,10 @@ export class CarService {
     let newURL = this.baseURL + "details";
     return this.httpClient.get<ListResponseModel<CarDto>>(newURL);
   }
+  getAllList(): Observable<ListResponseModel<Car>>{
+    let newURL = this.baseURL + "getall";
+    return this.httpClient.get<ListResponseModel<Car>>(newURL);
+  }
   getDetailsById(carId:number): Observable<ListResponseModel<CarDto>>{
     let newURL = this.baseURL + "detailsbyid?carId=" + carId;
     return this.httpClient.get<ListResponseModel<CarDto>>(newURL);
@@ -40,6 +44,14 @@ export class CarService {
   /*Methods POST */
   carAdd(car:Car){
     let newURL = this.baseURL + "add";
-    return this.httpClient.post(newURL,car,{responseType: 'text'});
+    return this.httpClient.post(newURL,car,{responseType:'text'});
+  }
+  carDelete(car:Car){
+    let newURL = this.baseURL + "delete";
+    return this.httpClient.post(newURL,car,{responseType:'text'});
+  }
+  carUpdate(car:Car){
+    let newURL = this.baseURL + "update";
+    return this.httpClient.put(newURL,car,{responseType:'text'});
   }
 }

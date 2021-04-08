@@ -33,8 +33,8 @@
                  <hr>
              </ng-template>
                  <ng-template let-car pTemplate="item">
-                     <div role="button" class="card ml-3 mr-3 p-3" routerLink="/car/detail/{{car.carId}}/{{car.carPropertyId}}">
-                         <img src="https://localhost:44383/{{imageFilter(car.carId)}}" width="250">
+                     <div role="button" class="card ml-3 mr-3 p-3" routerLink="/car/detail/{{car.id}}/{{car.carPropertyId}}">
+                         <img src="https://localhost:44383/{{imageFilter(car.id)}}" width="250">
                        
                          <div class="card-body">
                              <h5 class="card-title">{{car.carName}}</h5>

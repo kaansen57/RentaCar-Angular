@@ -1,5 +1,5 @@
 export interface CarDto {
-        carId:number;
+        id:number;
         carName:string;
         brandId:number;
         brandName:string;
