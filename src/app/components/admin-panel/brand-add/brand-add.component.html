@@ -14,17 +14,66 @@
             </div>
             <hr>
             <div class="row">
-                <div class="col-md-6">
-                    <form [formGroup]="brandAddForm">
-                        <div class="form-group">
-                            <label for="carName">Marka Adı</label>
-                            <input class="form-control" type="text" formControlName="brandName">
-                        </div>
-                        <div class="form-group">
-                            <button class="btn btn-success" (click)="brandAdd()">Marka Ekle</button>
-                        </div>
-                     </form>
-                   </div>
+                   <div class="col-md-12 ">
+                    <div class="card">
+                        <p-toolbar styleClass="p-mb-4">
+                            <ng-template pTemplate="left">
+                                <button pButton pRipple label="Yeni Kayıt" icon="pi pi-plus"
+                                    class="p-button-success p-mr-2" (click)="brandDialogShow()"></button>
+                            </ng-template>
+                        </p-toolbar>
+                        <p-table [value]="brands" [paginator]="true" [rows]="10" [showCurrentPageReport]="true"
+                            [rowHover]="true" dataKey="id"
+                            currentPageReportTemplate=" Toplam Marka Sayısı : {totalRecords} "
+                            [rowsPerPageOptions]="[10,25,50]">
+                            <ng-template pTemplate="header">
+                                <tr>
+                                    <th style="width: 3rem">
+                                        <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
+                                    </th>
+                                    <th>Marka</th>
+                                </tr>
+                            </ng-template>
+                            <ng-template pTemplate="body" let-brand>
+                                <tr>
+                                    <td>
+                                        <p-tableCheckbox [value]="brand"></p-tableCheckbox>
+                                    </td>
+                                    <td>{{brand.brandName}}</td>
+                                    <td class="text-center">
+                                        <button pButton pRipple icon="pi pi-pencil"
+                                            class="p-button-rounded p-button-warning mr-2"
+                                            (click)="editBrand(brand)"></button>
+                                        <button pButton pRipple icon="pi pi-trash"
+                                            class="p-button-rounded p-button-danger" (click)="deleteBrand(brand)"></button>
+                                    </td>
+                                </tr>
+                            </ng-template>
+                        </p-table>
+                        <p-dialog [(visible)]="brandDialog" [style]="{width: '450px'}" [header]="brandShow ? 'Araç Ekle' : 'Araç Düzenle'" [modal]="true"
+                            styleClass="p-fluid"> 
+                            <form [formGroup]="brandAddForm" *ngIf="brandShow">
+                                <div class="form-group">
+                                    <label for="carName">Marka Adı</label>
+                                    <input class="form-control" type="text" formControlName="brandName">
+                                </div>
+                             </form>
+                             <form [formGroup]="brandUpdateForm" *ngIf="editShow">
+                                <div class="form-group">
+                                    <input class="form-control" type="text" formControlName="brandId" readonly>
+                                </div>
+                                <div class="form-group">
+                                    <label for="carName">Marka Adı</label>
+                                    <input class="form-control" type="text" formControlName="brandName">
+                                </div>
+                             </form>
+                             <ng-template pTemplate="footer">
+                                <button pButton pRipple label="Güncelle" icon="pi pi-check" class="p-button-text"
+                                    (click)="updateBrand()" *ngIf="editShow"></button>
+                                <button pButton pRipple label="Kayıt Et" icon="pi pi-check" class="p-button-text"
+                                    (click)="brandAdd()" *ngIf="brandShow"></button>
+                            </ng-template>
+                        </p-dialog>
                 </div>
             </div>
         </div>

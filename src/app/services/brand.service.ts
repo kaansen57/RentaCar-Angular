@@ -22,9 +22,18 @@ export class BrandService {
 
 
   /*Methods POST*/
-  brandAdd(brand:Brand): Observable<ResponseModel>{
+  brandAdd(brand:Brand){
     let newURL =  this.baseURL + "add";
-    return this.httpClient.post<ResponseModel>(newURL,brand);
+    return this.httpClient.post(newURL,brand,{responseType:'text'});
+  }
+
+  brandDelete(brand:Brand){
+    let newURL =  this.baseURL + "delete";
+    return this.httpClient.post(newURL,brand,{responseType:'text'});
+  }
+  brandUpdate(brand:Brand){
+    let newURL =  this.baseURL + "update";
+    return this.httpClient.put(newURL,brand,{responseType:'text'});
   }
 
 }
