@@ -9,7 +9,7 @@ import { ListResponseModel } from '../models/listResponseModel';
 })
 export class ImageService {  
   constructor(private httpClient: HttpClient) {}
-     
+       
   baseURL: string = 'https://localhost:44383/api/image/';
                      
   getCarImage(carId: number): Observable<ListResponseModel<Image>> {

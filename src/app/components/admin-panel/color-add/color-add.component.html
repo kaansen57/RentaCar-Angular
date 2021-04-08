@@ -1,1 +1,31 @@
-<p>color-add works!</p>
+<app-status></app-status>
+<div class="container-fluid">
+    <p-toast position="top-right" key="error"></p-toast>
+    <p-toast position="top-right" key="success"></p-toast>
+    <div class="row">
+        <div class="col-md-3 border p-3 sidebar-wrapper">
+            <app-admin-sidebar></app-admin-sidebar>
+        </div>
+        <div class="col-md-9 p-4">
+            <div class="row">
+                <div class="col-md-12">
+                    <h5>Renk Ekle</h5>
+                </div>
+            </div>
+            <hr>
+            <div class="row">
+                <div class="col-md-6">
+                    <form [formGroup]="colorAddForm">
+                        <div class="form-group">
+                            <label for="carName">Renk Adı</label>
+                            <input class="form-control" type="text" formControlName="colorName">
+                        </div>
+                        <div class="form-group">
+                            <button class="btn btn-success" (click)="colorAdd()">Renk Ekle</button>
+                        </div>
+                     </form>
+                   </div>
+                </div>
+            </div>
+        </div>
+    </div>

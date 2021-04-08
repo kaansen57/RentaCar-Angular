@@ -14,12 +14,14 @@ import { BrandService } from 'src/app/services/brand.service';
 import { CarPropertyService } from 'src/app/services/car-property.service';
 import { CarService } from 'src/app/services/car.service';
 import { ColorService } from 'src/app/services/color.service';
+
 @Component({
   selector: 'app-car-add',
   templateUrl: './car-add.component.html',
   styleUrls: ['./car-add.component.css'],
   providers: [MessageService],
 })
+
 export class CarAddComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
@@ -72,12 +74,13 @@ export class CarAddComponent implements OnInit {
           severity: 'success',
           detail: 'Araba Başarıyla Eklendi!',
         });
-      }, (error)=>{
-        this.messageService.add({
-          key: 'error',
-          severity: 'error',
-          detail: error.error,
-        });
+      },errorResponse=>{
+        console.log(errorResponse);
+          this.messageService.add({
+            key: 'error',
+            severity: 'error',
+            detail: "",
+          });
       });
     } else {
       this.messageService.add({
