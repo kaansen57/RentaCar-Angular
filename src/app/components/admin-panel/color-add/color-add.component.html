@@ -14,18 +14,71 @@
             </div>
             <hr>
             <div class="row">
-                <div class="col-md-6">
-                    <form [formGroup]="colorAddForm">
-                        <div class="form-group">
-                            <label for="carName">Renk Adı</label>
-                            <input class="form-control" type="text" formControlName="colorName">
-                        </div>
-                        <div class="form-group">
-                            <button class="btn btn-success" (click)="colorAdd()">Renk Ekle</button>
-                        </div>
-                     </form>
-                   </div>
+                <div class="col-md-12 ">
+                    <div class="card">
+                        <p-toolbar styleClass="p-mb-4">
+                            <ng-template pTemplate="left">
+                                <button pButton pRipple label="Yeni Kayıt" icon="pi pi-plus"
+                                    class="p-button-success p-mr-2" (click)="colorDialogShow()"></button>
+                            </ng-template>
+                        </p-toolbar>
+                        <p-table [value]="colors" [paginator]="true" [rows]="10" [showCurrentPageReport]="true"
+                            [rowHover]="true" dataKey="id"
+                            currentPageReportTemplate=" Toplam Renk Sayısı : {totalRecords} "
+                            [rowsPerPageOptions]="[10,25,50]">
+                            <ng-template pTemplate="header">
+                                <tr>
+                                    <th style="width: 3rem">
+                                        <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
+                                    </th>
+                                    <th>Marka</th>
+                                    <th>İşlemler</th>
+                                </tr>
+                            </ng-template>
+                            <ng-template pTemplate="body" let-color>
+                                <tr>
+                                    <td>
+                                        <p-tableCheckbox [value]="color"></p-tableCheckbox>
+                                    </td>
+                                    <td>{{color.colorName}}</td>
+                                    <td class="text-center">
+                                        <button pButton pRipple icon="pi pi-pencil"
+                                            class="p-button-rounded p-button-warning mr-2"
+                                            (click)="editColor(color)"></button>
+                                        <button pButton pRipple icon="pi pi-trash"
+                                            class="p-button-rounded p-button-danger"
+                                            (click)="deleteColor(color)"></button>
+                                    </td>
+                                </tr>
+                            </ng-template>
+                        </p-table>
+                        <p-dialog [(visible)]="colorDialog" [style]="{width: '450px'}"
+                            [header]="colorShow ? 'Araç Ekle' : 'Araç Düzenle'" [modal]="true" styleClass="p-fluid">
+                            <form [formGroup]="colorAddForm" *ngIf="colorShow">
+                                <div class="form-group">
+                                    <label for="carName">Renk Adı</label>
+                                    <input class="form-control" type="text" formControlName="colorName">
+                                </div>
+                            </form>
+                            <form [formGroup]="colorUpdateForm" *ngIf="editShow">
+                                <div class="form-group">
+                                    <input class="form-control" type="text" formControlName="colorId" readonly>
+                                </div>
+                                <div class="form-group">
+                                    <label for="carName">Renk Adı</label>
+                                    <input class="form-control" type="text" formControlName="colorName">
+                                </div>
+                            </form>
+                            <ng-template pTemplate="footer">
+                                <button pButton pRipple label="Güncelle" icon="pi pi-check" class="p-button-text"
+                                    (click)="updateColor()" *ngIf="editShow"></button>
+                                <button pButton pRipple label="Kayıt Et" icon="pi pi-check" class="p-button-text"
+                                    (click)="colorAdd()" *ngIf="colorShow"></button>
+                            </ng-template>
+                        </p-dialog>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
+</div>

@@ -18,8 +18,19 @@ export class ColorService {
     return this.httpClient.get<ListResponseModel<Color>>(newUrl);
   }
 
-  colorAdd(color: Color): Observable<ResponseModel> {
+
+  // Method POST
+  colorAdd(color: Color) {
     let newUrl = this.baseURL + 'add';
-    return this.httpClient.post<ResponseModel>(newUrl, color);
+    return this.httpClient.post(newUrl, color,{responseType:'text'});
+  }
+
+  colorDelete(color:Color){
+    let newURL =  this.baseURL + "delete";
+    return this.httpClient.post(newURL,color,{responseType:'text'});
+  }
+  colorUpdate(color:Color){
+    let newURL =  this.baseURL + "update";
+    return this.httpClient.put(newURL,color,{responseType:'text'});
   }
 }

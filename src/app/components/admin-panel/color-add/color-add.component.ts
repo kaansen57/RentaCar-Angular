@@ -21,30 +21,33 @@ export class ColorAddComponent implements OnInit {
     private messageService: MessageService
   ) { }
   colorAddForm:FormGroup;
+  colorUpdateForm: FormGroup;
   color: Color;
+  colors: Color[];
+  colorShow: boolean;
+  editShow: boolean;
+  colorDialog: boolean;
 
-  createCarAddForm() {
-    this.colorAddForm = this.formBuilder.group({
-     colorName:["", Validators.required],
-    });
-  }  
-  colorAdd(){
+  colorAdd() {
     if (this.colorAddForm.valid) {
-      let colorModel:Color = {...this.colorAddForm.value};
-      this.colorService.colorAdd(colorModel).subscribe((response)=>{
-        this.messageService.add({
-          key: 'success',
-          severity: 'success',
-          detail: 'Renk Başarıyla Eklendi!',
-        });
-      },errorResponse=>{
-        console.log(errorResponse);
+      let colorModel: Color = { ...this.colorAddForm.value };
+      this.colorService.colorAdd(colorModel).subscribe(
+        (response) => {
+          this.messageService.add({
+            key: 'success',
+            severity: 'success',
+            detail: response,
+          });
+          this.pageReload();
+        },
+        (errorResponse) => {
           this.messageService.add({
             key: 'error',
             severity: 'error',
-            detail: "",
+            detail: errorResponse.error,
           });
-      });
+        }
+      );
     } else {
       this.messageService.add({
         key: 'error',
@@ -54,8 +57,96 @@ export class ColorAddComponent implements OnInit {
     }
   }
 
-  ngOnInit(): void {
-    this.createCarAddForm();
+  updateColor() {
+    if (this.colorUpdateForm.valid) {
+      let colorModel: Color = { ...this.colorUpdateForm.value };
+      this.colorService.colorUpdate(colorModel).subscribe(
+        (response) => {
+          this.messageService.add({
+            key: 'success',
+            severity: 'success',
+            detail: response,
+          });
+          this.pageReload();
+        },
+        (errorResponse) => {
+          this.messageService.add({
+            key: 'error',
+            severity: 'error',
+            detail: errorResponse.error,
+          });
+        }
+      );
+    } else {
+      this.messageService.add({
+        key: 'error',
+        severity: 'error',
+        detail: 'Tüm Alanları Doldurunuz!',
+      });
+    }
   }
 
+  deleteColor(color: Color) {
+    this.colorService.colorDelete(color).subscribe(
+      (response) => {
+        this.messageService.add({
+          key: 'success',
+          severity: 'success',
+          detail: response,
+        });
+        this.pageReload();
+      },
+      (errorResponse) => {
+        this.messageService.add({
+          key: 'error',
+          severity: 'error',
+          detail: errorResponse.error,
+        });
+      }
+    );
+  }
+
+colorGetAll() {
+    this.colorService.getAll().subscribe((response) => {
+      this.colors = response.data;
+    });
+  }
+
+  createColorAddForm() {
+    this.colorAddForm = this.formBuilder.group({
+      colorName:["", Validators.required],
+     });
+  }
+
+  createColorUpdateForm() {
+    this.colorUpdateForm = this.formBuilder.group({
+      colorId : [null, Validators.required],
+      colorName: ['', Validators.required],
+    });
+  }
+
+  colorDialogShow() {
+    this.colorDialog = true;
+    this.colorShow = true;
+    this.editShow = false;
+  }
+
+  editColor(color: Color) {
+    this.colorUpdateForm.patchValue({ ...color });
+    this.colorDialog = true;
+    this.colorShow = false;
+    this.editShow = true;
+  }
+
+  pageReload() {
+    setTimeout(() => {
+      history.go();
+    }, 2000);
+  }
+
+  ngOnInit(): void {
+    this.createColorAddForm();
+    this.createColorUpdateForm();
+    this.colorGetAll();
+  }
 }
