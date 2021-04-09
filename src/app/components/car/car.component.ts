@@ -4,6 +4,9 @@ import { CarDto } from 'src/app/models/car/carDto';
 import { ActivatedRoute } from '@angular/router';
 import { ImageService } from 'src/app/services/image.service';
 import { Image } from 'src/app/models/image/image';
+import { CarPropertyService } from 'src/app/services/car-property.service';
+import { RentalTermService } from 'src/app/services/rental-term.service';
+import { RentalTerm } from 'src/app/models/rentalTerm/rentalTerm';
 
 @Component({
   selector: 'app-car',
@@ -17,6 +20,8 @@ export class CarComponent implements OnInit {
   constructor(
     private carService: CarService,
     private imageService: ImageService,
+    private carProperty: CarPropertyService,
+    private rentalTerm : RentalTermService,
     private activatedRoute: ActivatedRoute
   ) {}
 
@@ -29,6 +34,7 @@ export class CarComponent implements OnInit {
   minPrice:number = 0;
   maxPrice:number = 1500;
   rangeValues: number[] = [this.minPrice, this.maxPrice];
+  rentalTerms : RentalTerm[];
 
   /*Methods */
   getCarsAll() {
@@ -46,6 +52,7 @@ export class CarComponent implements OnInit {
       return "/Uploads/default.png";
     }
   }
+
   getCarImageAll() {
     this.imageService.getCarImageAll().subscribe((response) => {
       //data district 
@@ -65,6 +72,12 @@ export class CarComponent implements OnInit {
       this.cars = response.data;
     });
    this.carsInImageCheck();
+  }
+  
+  getRentalTerm(carId:number){
+    this.rentalTerm.getRentalTerm(carId).subscribe((response) => {
+       return this.rentalTerms = response.data;
+    })
   }
   carsInImageCheck(){
     this.cars.forEach(x=>{
@@ -93,5 +106,6 @@ export class CarComponent implements OnInit {
         this.getCarImageAll();
       }
     });
+    
   }
 }

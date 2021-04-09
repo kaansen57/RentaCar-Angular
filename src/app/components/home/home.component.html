@@ -3,21 +3,35 @@
         <div class="row">
             <div class="col-md-7">
                 <img src="../assets/icons/car.svg" alt="">
-                <h1 class="title ">İhtiyacın olan aracı en ucuz fiyata kirala</h1>
+                <h1 class="title ">İhtiyacın olan aracı en ucuza kirala</h1>
                 <h3 class="subtitle">
-                    TravelCar ile farklı kategorilerde yüzlerce aracı en kolay şekilde kiralayabilirsiniz.
+                    TravelCar ile farklı seçeneklerde yüzlerce aracı en kolay şekilde kiralayabilirsiniz
                 </h3>
             </div>
 
-            <div class="col-md-5 mt-3 search-wrapper d-flex align-items-center">
-                <div class="pt-4 pb-4 d-flex flex-wrap justify-content-center ">
-                    <div class="col-md-6">
-                        <label for="range">Aracı Alış/Bırakış</label>
-                        <p-calendar [(ngModel)]="rangeDates" (onSelect)="change(rangeDates)" dateFormat="dd.mm.yy"
-                            selectionMode="range" [readonlyInput]="true" inputId="range"></p-calendar>
+            <div class="col-md-5 mt-3 search-wrapper d-flex justify-content-center align-items-center">
+                <div class="row p-4">
+                    <div class="col-md-12">
+                        <h5>4 adımda hızlı kiralama</h5>
+                        <img src="../assets/home-car2.svg" width="300" alt="">
                     </div>
-                    <div class="col-md-12 mt-4">
-                        <a routerLink="/cars" type="button" class="btn btn-success">Araçları Ara</a>
+                    <div class="col-md-12">
+                        <p-timeline [value]="events1" layout="horizontal" 
+                            styleClass="customized-timeline">
+                            <ng-template pTemplate="marker" let-event>
+                                <span class="custom-marker p-shadow-2" [style.backgroundColor]="event.color">
+                                    <i [ngClass]="event.icon"></i>
+                                </span>
+                            </ng-template>
+                            <ng-template pTemplate="content" let-event>
+                                {{event.status}}
+                            </ng-template>
+                        </p-timeline>
+                    </div>
+                    <div class="col-md-12 mt-3">
+                        <div class="d-flex align-items-center justify-content-center rent-fast">
+                            <a routerLink="/cars">Hemen Kirala</a> <i class="pi pi-chevron-right"></i>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -27,31 +41,46 @@
 <div class="container mt-5">
     <div class="row">
         <div class="col-md-12">
-         <p-carousel [value]="cars" [autoplayInterval]="3000" [circular]="true" [numVisible]="3">
-             <ng-template pTemplate="header">
-                 <h2 class="text-center mb-4">Araçlarımız</h2>
-                 <hr>
-             </ng-template>
-                 <ng-template let-car pTemplate="item">
-                     <div role="button" class="card ml-3 mr-3 p-3" routerLink="/car/detail/{{car.id}}/{{car.carPropertyId}}">
-                         <img src="https://localhost:44383/{{imageFilter(car.id)}}" width="250">
-                       
-                         <div class="card-body">
-                             <h5 class="card-title">{{car.carName}}</h5>
-                         </div>
-                     </div>
-                 </ng-template>
-         </p-carousel>
+            <p-carousel [value]="cars" [autoplayInterval]="5000" [circular]="true" [numVisible]="3">
+                <ng-template pTemplate="header">
+                    <h2 class="text-center mb-4">Araç Filomuz</h2>
+                    <hr>
+                </ng-template>
+                <ng-template let-car pTemplate="item">
+                    <div role="button" class="card ml-3 mr-3 p-3">
+                        <img src="https://localhost:44383/{{imageFilter(car.id)}}" width="250" height="150">
+                        <div class="card-body">
+                            <h5 class="card-title text-center"> {{car.brandName}} {{car.carName}}</h5>
+                            <div class="row text-center">
+                                <div class="col-md-6 ">
+                                    <h5 class="card-title price-title mt-3"> Fiyat <div class="dailyprice">
+                                            {{car.dailyPrice}}₺
+                                        </div>
+                                    </h5>
+                                </div>
+                                <div class="col-md-6">
+                                    <h5 class="card-title findex-title mt-3"> Findeks <div class="findex">
+                                            <i class="pi pi-star mr-1"></i> {{car.findexScore}}
+                                        </div>
+                                    </h5>
+                                </div>
+                            </div>
+                            <div class="row mt-3">
+                                <div class="col-md-12">
+                                    <div routerLink="/car/detail/{{car.id}}/{{car.carPropertyId}}"
+                                        class="p-button-success rental-car d-flex align-items-center justify-content-center">
+                                        Aracı Şimdi Kirala
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </ng-template>
+            </p-carousel>
         </div>
-     </div>
+    </div>
+</div>
+<div class="wave">
+    <img src="../assets/wave.svg" alt="">
 </div>
 <app-footer></app-footer>
-<!-- <label for="startDate">Aracı Alış</label>
-    <p-calendar (ngModel)="startDate" (ngModelChange)="changeDateEnd($event)" [readonlyInput]="true"
-        [showIcon]="true" [showTime]="true" inputId="startDate"></p-calendar>
-</div>
-<div class="col-md-6">
-    <label for="endDate">Aracı Bırakış</label>
-    <p-calendar (ngModel)="endDate" (ngModelChange)="changeDateStart($event)" [readonlyInput]="true"
-        [showIcon]="true" [showTime]="true" inputId="endDate"></p-calendar>
-</div> -->

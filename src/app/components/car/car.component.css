@@ -1,10 +1,25 @@
- .p-dropdown {
-    width: 14rem;
-    font-weight: normal;
+.findex-score{
+    width:70px;
+    height:40px;
+    background:#4CAF50;
+    color:#fff;
+    border-radius:10px;
+}
+.rental-car{
+    width:100%;
+    height:50px;
+    background:#4CAF50;
+    color:#fff;
+    font-family: 'Righteous', cursive;
+    font-weight: 700;
 }
 .car-name {
     font-size: 1.5rem;
     font-weight: 700;
+}
+.car-brand {
+    font-size: 1.2rem;
+    font-weight: 500;
 }
 .car-description {
     margin: 0 0 1rem 0;
@@ -23,10 +38,11 @@
     padding: 1rem;
     width: 100%;
 }
- .car-list-item img {
-    width: 150px;
-    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+ .row img {
+    width: 250px;
+    /* box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23); */
     margin-right: 2rem;
+    margin-left: 2rem;
 }
  .car-list-item .car-list-detail {
     flex: 1 1 0;
@@ -58,7 +74,7 @@
 }
  .car-grid-item img {
     width: 75%;
-    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+    /* box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23); */
     margin: 2rem 0;
 }
 .car-grid-item .car-grid-item-content {

@@ -10,4 +10,5 @@ export interface CarDto {
         dailyPrice:number;
         carPropertyId:number;
         modelYear:string;
+        findexScore:number;
 }

@@ -1,24 +1,46 @@
-<div class="row p-5">
+<div class="row footer-top pt-5 p-4">
     <div class="col-md-3">
         <!-- logo -->
         <div class="col-md-2 d-flex align-items-center">
             <a routerLink="/" class="logo ml-4"> <span><b>Travel</b>
-                <span style="color:#fff;">Car</span> </span></a>
+                    <span style="color:#fff;">Car</span> </span></a>
         </div>
     </div>
-    <div class="col-md-3">
+    <div class="col-md-3 ">
         <h5>Kiralama Süreçleri</h5>
-        <ul >
-            <li>Araç Kiralama Şirketleri</li>
-            <li>Gizlilik</li>
-            <li>Araç Kiralama Koşulları ve Hizmet Sözleşmesi  </li>
+        <ul class="list-group">
+            <div class="list-hr mt-2 mb-4"> </div>
+            <li class="list-item"><a href="#">Araç Kiralama Hakkında</a></li>
+            <li class="list-item"><a href="#">Gizlilik</a></li>
+            <li class="list-item"><a href="#">Araç Kiralama Koşulları ve Hizmet Sözleşmesi</a> </li>
         </ul>
     </div>
-    <div class="col-md-3">
+    <div class="col-md-3 ">
         <h5>Kullanıcı Menüleri</h5>
+        <ul class="list-group">
+            <div class="list-hr mt-2 mb-4"> </div>
+            <li class="list-item"><a routerLink="/cars">Kiralık Araçlar</a></li>
+            <li class="list-item"><a routerLink="/admin/car-add">Araç Ekle</a></li>
+            <li class="list-item"><a routerLink="/admin">Admin Paneli</a></li>
+        </ul>
     </div>
-    <div class="col-md-3">
+    <div class="col-md-3 ">
         <h5>Popüler Konular</h5>
-
+        <ul class="list-group">
+            <div class="list-hr mt-2 mb-4"> </div>
+            <li class="list-item"><a href="#">Türkiye'de Gezilecek Yerler</a></li>
+            <li class="list-item"><a href="#">Turistik Yerler</a></li>
+            <li class="list-item"><a href="#">Yakıt Tasarrufu</a> </li>
+        </ul>
     </div>
 </div>
+<div class="row d-flex align-items-center footer-bottom">
+    <div class="col-md-6 d-flex justify-content-start pl-5">
+        <span class="copyright "> Tüm Hakları Saklıdır 2021 @ Copyright</span>
+    </div>   
+    <div class="col-md-6 d-flex justify-content-end pr-5">
+        <span class="term ml-4"> Şartlar ve Koşullar </span>
+        <span class="term ml-4"> Gizlilik Politikası</span>
+        <span class="term ml-4"> Hakkımızda</span>
+    </div>
+</div> 

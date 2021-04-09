@@ -7,4 +7,5 @@ export interface Car{
     description:string;
     carName:string;
     carProperty:number;
+    findexScore:number;
 }

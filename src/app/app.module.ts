@@ -21,6 +21,8 @@ import {CarouselModule} from 'primeng/carousel';
 import {TableModule} from 'primeng/table';
 import {ToolbarModule} from 'primeng/toolbar';
 import {DialogModule} from 'primeng/dialog';
+import {RatingModule} from 'primeng/rating';
+import {TimelineModule} from 'primeng/timeline';
 
 
 import { AppRoutingModule } from './app-routing.module';
@@ -109,7 +111,9 @@ import { AdminSidebarComponent } from './components/admin-panel/shared/admin-sid
     ReactiveFormsModule,
     TableModule,
     ToolbarModule,
-    DialogModule
+    DialogModule,
+    RatingModule,
+    TimelineModule
   ],
   providers: [],
   bootstrap: [AppComponent],

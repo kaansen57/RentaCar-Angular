@@ -19,8 +19,26 @@ h5{
 ul {
     list-style-type: none;
 }
-ul li{
+ul li {
+    margin:4px 0;
+}
+.list-item a{
     font-size:16px;
     font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    color:#fff;
+    color:silver;
+}
+.list-hr{
+   border-bottom: 1px solid rgb(104, 102, 102);
+}
+.footer-top{
+    min-height:350px;
+}
+.footer-bottom{
+    min-height:100px;
+    background-color:#2A2A2A;
+}
+.copyright , .term{
+    font-size:15px;
+    color:silver;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }

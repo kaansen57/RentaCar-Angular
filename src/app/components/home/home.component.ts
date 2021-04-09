@@ -1,4 +1,5 @@
 import { Component, EventEmitter, OnInit, Output , Input } from '@angular/core';
+import { PrimeIcons } from 'primeng/api';
 import { CarDto } from 'src/app/models/car/carDto';
 import { Image } from 'src/app/models/image/image';
 import { CarService } from 'src/app/services/car.service';
@@ -16,6 +17,7 @@ export class HomeComponent implements OnInit {
   rangeDates: Date[];
   images:Image[];
   cars:CarDto[];
+  events1: any[];
 
   changeDateEnd(e:Date){
     this.endDate = e;
@@ -55,5 +57,11 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
     this.getCarAll();
     this.getCarImageAll();
+    this.events1 = [
+      {status: 'Kayıt Ol',  icon: PrimeIcons.USER, color: '#D23B38'},
+      {status: 'Araç Seç',  icon: PrimeIcons.EYE, color: '#D23B38'},
+      {status: 'Ödeme Yap',  icon: PrimeIcons.CREDIT_CARD, color: '#dda455'},
+      {status: 'Hazır',  icon: PrimeIcons.CHECK, color: '#4CAF50'}
+  ];
   }
 }

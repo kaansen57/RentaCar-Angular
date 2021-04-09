@@ -141,6 +141,7 @@ export class CarAddComponent implements OnInit {
       description: [''],
       carName: ['', Validators.required],
       carProperty: [null, Validators.required],
+      findexScore: [null, [Validators.required,Validators.min(0),Validators.max(1900)]],
     });
   }
 
@@ -154,6 +155,7 @@ export class CarAddComponent implements OnInit {
       description: [''],
       carName: ['', Validators.required],
       carProperty: [null, Validators.required],
+      findexScore: [null, [Validators.required,Validators.min(0),Validators.max(1900)]],
     });
   }
   getCarAll() {

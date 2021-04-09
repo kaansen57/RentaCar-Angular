@@ -27,23 +27,53 @@
         </div>
         <div class="col-md-8">
             <app-filter-menu [(filterText)]="filterText"></app-filter-menu>
-            <p-dataView [value]="cars | filterPipe:filterText | colorFilter:filterColor | brandFilter:filterBrand | priceFilter:rangeValues[0]:rangeValues[1]" [paginator]="true" [rows]="10">
+            <p-dataView
+                [value]="cars | filterPipe:filterText | colorFilter:filterColor | brandFilter:filterBrand | priceFilter:rangeValues[0]:rangeValues[1]"
+                [paginator]="true" [rows]="10">
                 <ng-template let-car pTemplate="listItem">
-                    <div class="p-col-12">
-                        <div class="car-list-item" [routerLink]="['/car/detail/',car.id,car.carPropertyId]">
-                            <img src="https://localhost:44383/{{imageFilter(car.id)}}" [alt]="car.carName" />
-                            <div class="car-list-detail">
-                                <div class="car-name"></div>
-                                <div class="car-name">{{car.carName}}</div>
-                                <div class="car-description">{{car.brandName }}</div>
-                                <!-- <p-rating [ngModel]="car.rating" [readonly]="true" [cancel]="false"></p-rating> -->
-                                <i class="pi pi-palette car-category-icon"></i><span
-                                    class="car-category">{{car.colorName | uppercase}}</span>
+                    <div class="row">
+                        <div class="col-md-12 p-4">
+
+                            <div class="col-md-12 d-flex align-items-center">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <span class="car-name">  {{car.carName}}</span>
+                                        <span class="car-brand" >  {{car.brandName }}</span>
+                                    </div>
+                                    <div class="col-md-6 ">
+                                        <span class="findex-score ml-4 d-flex align-items-center justify-content-center ">
+                                            <i class="pi pi-star mr-1"></i> {{car.findexScore}} </span>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="car-list-action">
-                                <span class="car-price">{{car.dailyPrice}}₺</span>
-                                <span class="float-right">KDV Dahil</span>
-                                <span class="car-price badge badge-success">{{car.dailyPrice | vatAdded:0.20}}</span>
+
+                            <div class="row">
+                                <div class="col-md-6 text-center p-2">
+                                    <img src="https://localhost:44383/{{imageFilter(car.id)}}" [alt]="car.carName" />
+                                </div>
+                                <div class="col-md-6 ">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <h5>{{car.dailyPrice}}₺ </h5>
+                                            <span class="car-price">{{car.dailyPrice}}₺</span>
+                                            <span class="car-price badge badge-success">{{car.dailyPrice |
+                                                vatAdded:0.20}}</span>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-12  ">
+                                            <div role="button" [routerLink]="['/car/detail/',car.id,car.carPropertyId]"
+                                                class="rental-car d-flex align-items-center justify-content-center">
+                                                Aracı Şimdi Kirala</div>
+                                        </div>
+                                    </div>
+                                    <!-- <div class="car-list-action">
+                                        <span class="car-price">{{car.dailyPrice}}₺</span>
+                                        <span class="float-right">KDV Dahil</span>
+                                        <span class="car-price badge badge-success">{{car.dailyPrice |
+                                            vatAdded:0.20}}</span>
+                                    </div> -->
+                                </div>
                             </div>
                         </div>
                     </div>

@@ -62,12 +62,14 @@
                 </div> -->
                 <div class="col-md-12 ">
                     <div class="card">
+                        <!-- LİST TOOLBAR -->
                         <p-toolbar styleClass="p-mb-4">
                             <ng-template pTemplate="left">
                                 <button pButton pRipple label="Yeni Kayıt" icon="pi pi-plus"
                                     class="p-button-success p-mr-2" (click)="carDialogShow()"></button>
                             </ng-template>
                         </p-toolbar>
+                        <!-- LİST -->
                         <p-table [value]="cars" [paginator]="true" [rows]="10" [showCurrentPageReport]="true"
                             [rowHover]="true" dataKey="id"
                             currentPageReportTemplate=" Toplam Araç Sayısı : {totalRecords} "
@@ -81,6 +83,7 @@
                                     <th>Marka</th>
                                     <th>Renk</th>
                                     <th>Günlük Fiyat</th>
+                                    <th>Findex Puanı</th>
                                     <th>İşlemler</th>
                                 </tr>
                             </ng-template>
@@ -93,6 +96,7 @@
                                     <td>{{car.brandName}}</td>
                                     <td>{{car.colorName}}</td>
                                     <td>{{car.dailyPrice}}</td>
+                                    <td>{{car.findexScore}}</td>
                                     <td class="text-center">
                                         <button pButton pRipple icon="pi pi-pencil"
                                             class="p-button-rounded p-button-warning mr-2"
@@ -103,8 +107,12 @@
                                 </tr>
                             </ng-template>
                         </p-table>
-                        <p-dialog [(visible)]="carDialog" [style]="{width: '450px'}" [header]="carShow ? 'Araç Ekle' : 'Araç Düzenle'" [modal]="true"
-                            styleClass="p-fluid"> 
+                        <!-- LİST END -->
+
+                          <!-- DIALOG -->
+                        <p-dialog [(visible)]="carDialog" [style]="{width: '450px'}"
+                            [header]="carShow ? 'Araç Ekle' : 'Araç Düzenle'" [modal]="true" styleClass="p-fluid">
+                            <!-- ADD FORM -->
                             <form [formGroup]="carAddForm" *ngIf="carShow">
                                 <div class="form-group">
                                     <label for="carName">Arabanın Modeli</label>
@@ -147,8 +155,14 @@
                                         </option>
                                     </select>
                                 </div>
+                                <div class="form-group">
+                                    <label for="findexScore">Findex Score</label>
+                                    <input class="form-control"  type="text" formControlName="findexScore">
+                                </div>
                             </form>
+                            <!-- ADD FORM END -->
 
+                            <!-- UPDATE FORM -->
                             <form [formGroup]="carUpdateForm" *ngIf="editShow">
                                 <div class="form-group">
                                     <label for="id">id</label>
@@ -195,7 +209,13 @@
                                         </option>
                                     </select>
                                 </div>
+                                <div class="form-group">
+                                    <label for="findexScore">Findex Score</label>
+                                    <input class="form-control" type="text" formControlName="findexScore">
+                                </div>
                             </form>
+                              <!-- UPDATE FORM END-->
+
                             <ng-template pTemplate="footer">
                                 <button pButton pRipple label="Güncelle" icon="pi pi-check" class="p-button-text"
                                     (click)="updateCar()" *ngIf="editShow"></button>
@@ -203,6 +223,7 @@
                                     (click)="carAdd()" *ngIf="carShow"></button>
                             </ng-template>
                         </p-dialog>
+                        <!-- DIALOG END -->
                     </div>
                 </div>
             </div>
