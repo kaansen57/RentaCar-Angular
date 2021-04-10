@@ -7,6 +7,7 @@ import { Image } from 'src/app/models/image/image';
 import { CarPropertyService } from 'src/app/services/car-property.service';
 import { RentalTermService } from 'src/app/services/rental-term.service';
 import { RentalTerm } from 'src/app/models/rentalTerm/rentalTerm';
+import { LocalStorageService } from 'src/app/services/local-storage.service';
 
 @Component({
   selector: 'app-car',
@@ -22,7 +23,8 @@ export class CarComponent implements OnInit {
     private imageService: ImageService,
     private carProperty: CarPropertyService,
     private rentalTerm : RentalTermService,
-    private activatedRoute: ActivatedRoute
+    private activatedRoute: ActivatedRoute,
+    private localStorageService: LocalStorageService,
   ) {}
 
   /*Data */
@@ -35,6 +37,7 @@ export class CarComponent implements OnInit {
   maxPrice:number = 1500;
   rangeValues: number[] = [this.minPrice, this.maxPrice];
   rentalTerms : RentalTerm[];
+  
 
   /*Methods */
   getCarsAll() {
@@ -94,6 +97,8 @@ export class CarComponent implements OnInit {
   }
  
   ngOnInit(): void {
+ 
+    
     this.activatedRoute.params.subscribe((params) => {
       if (params['brandId']) {
         this.getCarBrandFiltered(params['brandId']);

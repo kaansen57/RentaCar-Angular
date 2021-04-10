@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { LocalStorageService } from 'src/app/services/local-storage.service';
 
 @Component({
   selector: 'app-filter-menu',
@@ -7,7 +8,8 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 })
 export class FilterMenuComponent implements OnInit {
 
-  constructor() { }
+  constructor(private localStorageService: LocalStorageService) { }
+  userFindexScore:number;
 
   @Output() filterTextChange = new EventEmitter<string>();
   @Input() filterText: string;
@@ -17,6 +19,7 @@ export class FilterMenuComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.userFindexScore = this.localStorageService.getItem('user')[0].findexScore;
   }
 
 }

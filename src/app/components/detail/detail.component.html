@@ -12,8 +12,8 @@
                         <div class="7-24">{{detail.findexScore}}</div>
                     </span>
                     <div class="detail-wrapper mt-3 mb-5 ">
-                        <h5 >
-                            {{detail.brandName}} {{detail.carName}} 
+                        <h5>
+                            {{detail.brandName}} {{detail.carName}}
                         </h5>
                         <div class="free-cancel mt-3">
                             <img src="../assets/icons/ok.png" width="22" style="margin-right:5px;"> ÜCRETSİZ İPTAL
@@ -38,6 +38,9 @@
                                 {{property.carClassName}}
                             </h5>
                             <hr>
+                            <div class="banner d-flex mt-5 justify-content-center">
+                                <img src="../assets/banner.png" alt="">
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -65,10 +68,17 @@
                         (onSelect)="change(rangeDates)" [minDate]="minDate" [touchUI]="true" dateFormat="dd.mm.yy"
                         [showIcon]="true" [showTime]="true" selectionMode="range" [readonlyInput]="true"
                         inputId="range">
-                    </p-calendar>   
-                    {{rentDate | date:'d.MM.yyyy' }}
-                    {{returnDate | date:'d.MM.yyyy'  }}
-               
+                    </p-calendar>
+
+                    <div class="mt-3" *ngIf="returnDate">
+                        <div>
+                            <img src="../assets/rent.svg" width="50"  class="text-danger"> {{rentDate | date:'d.MM.yyyy' }}
+                        </div>
+                        <div>
+                            <img src="../assets/return.svg" width="50" class="text-danger" > {{returnDate | date:'d.MM.yyyy' }}
+                        </div>
+                    </div>
+
                     <hr>
                 </div>
                 <div class="rent-dailyprice" *ngIf="rentDailyLength">

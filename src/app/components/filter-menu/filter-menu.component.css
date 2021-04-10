@@ -1,5 +1,12 @@
 @media screen and (max-width: 768px) {
     .row{
         margin-top:20px;
+        
     }
+}
+.container{
+    background-color:#fff;
+}
+.car-price{
+    font-size:19px;
 }

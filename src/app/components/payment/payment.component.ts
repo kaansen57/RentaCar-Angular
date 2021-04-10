@@ -5,7 +5,9 @@ import { MessageService } from 'primeng/api';
 import { CreditCard } from 'src/app/models/creditCard/creditCard';
 import { Rental } from 'src/app/models/rental/rental';
 import { CreditCardService } from 'src/app/services/credit-card.service';
+import { CustomerService } from 'src/app/services/customer.service';
 import { RentalService } from 'src/app/services/rental.service';
+import { SavedCardService } from 'src/app/services/saved-card.service';
 
 @Component({
   selector: 'app-payment',
@@ -16,8 +18,10 @@ import { RentalService } from 'src/app/services/rental.service';
 export class PaymentComponent implements OnInit {
   constructor(
     private creditCardService: CreditCardService,
+    private savedCardService: SavedCardService,
     private messageService: MessageService,
-    private rentalService :RentalService,
+    private rentalService: RentalService,
+    private customerService: CustomerService,
     private router: Router,
     private activatedRoute: ActivatedRoute
   ) {}
@@ -33,16 +37,24 @@ export class PaymentComponent implements OnInit {
   cardType: number;
   months: number[] = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
   years: number[] = [2021, 2022, 2023, 2024, 2025, 2026, 2027, 2028];
+
   cardId: number;
   propId: number;
+  rentDate: Date;
+  returnDate: Date;
 
-  rentals :Rental = {
-    carId:2,
-    customerId:6,
-    rentDate:new Date("16.04.2021"),
-    returnDate:new Date("17.04.2021")
-}
+  userId: number;
+  userCards: CreditCard[];
+  customerId: number;
 
+  rental: Rental;
+
+  showDetail:boolean = false;
+  
+  showCardDetail(){
+    this.showDetail = !this.showDetail;
+  }
+  //card save dialog methods
   showConfirm() {
     this.messageService.clear();
     this.messageService.add({
@@ -52,37 +64,59 @@ export class PaymentComponent implements OnInit {
       detail: 'Kredi Kartınız Kaydedilsin Mi ?',
     });
   }
-
   onConfirm() {
     //kredi kart kaydetme servisi
-    // this.messageService.clear('c');
-    // this.rentalAdd(this.rentals);
     this.cardSave(this.creditCardInformation);
+    this.messageService.clear('c');
+    this.pageReload();
   }
   onReject() {
     this.messageService.clear('c');
+    this.pageReload();
   }
-  rentalAdd(rental:Rental){
-    this.rentalService.rentalAdd(rental).subscribe((response)=>{
-      console.log(response);
+  //card save dialog methods
+  getCustomer(userId: number) {
+    this.customerService.getCustomerByUserId(userId).subscribe((response) => {
+      this.customerId = response.data[0].id;
     });
   }
+
+  rentalAdd() {
+    this.rental = {
+      carId: this.cardId,
+      customerId: this.customerId,
+      rentDate: this.rentDate,
+      returnDate: this.returnDate,
+    };
+    console.log(this.rental);
+    
+    this.rentalService.rentalAdd(this.rental).subscribe(
+      (response) => {
+        this.messageService.add({
+          severity: 'success',
+          detail: 'Kiralama Yapılıyor... Lütfen Bekleyiniz !',
+        });
+        this.creditCardCheck(this.creditCardInformation);
+      },
+      (err) => {
+        this.messageService.add({
+          severity: 'error',
+          detail: 'Kiralama Yapılamadı!',
+        });
+      }
+    );
+  }
   creditCardCheck(creditCard: CreditCard) {
-    console.log(creditCard);
     this.creditCardService.creditCardCheck(creditCard).subscribe(
       (response) => {
-        this.showConfirm();
         this.messageService.add({
           severity: 'success',
           summary: 'Ödeme Başarılı !',
           detail: 'Ödeme Başarılı Yönlendiriliyorsunuz!',
         });
-        setTimeout(() => {
-          this.router.navigate(['/payment-success']);
-        }, 2000);
+        this.showConfirm();
       },
       (err) => {
-        this.showConfirm();
         this.messageService.add({
           severity: 'error',
           summary: 'Geçersiz Kredi Kartı !',
@@ -92,25 +126,50 @@ export class PaymentComponent implements OnInit {
     );
   }
 
+  getUserCards(userId: number) {
+    this.savedCardService.creditCardByUser(userId).subscribe((response) => {
+      this.userCards = response.data;
+    });
+  }
+
+  cardSave(creditCardInformation: CreditCard) {
+    console.log(creditCardInformation);
+    this.savedCardService.creditCardAdd(creditCardInformation).subscribe(
+      (response) => {
+        console.log(response);
+      },
+      (errorResponse) => {
+        console.log(errorResponse);
+      }
+    );
+  }
   onSubmit(creditCardInformation: CreditCard) {
     this.creditCardInformation = creditCardInformation;
-    this.creditCardCheck(creditCardInformation);
+    this.creditCardInformation.userId = this.userId;
+    // this.creditCardCheck(creditCardInformation);
+    this.rentalAdd();
   }
 
-  cardSave(creditCardInformation: CreditCard){
-    this.creditCardService.creditCardAdd(creditCardInformation).subscribe((response)=>{
-        console.log(response);
-    },(errorResponse)=>{
-      console.log(errorResponse);
-    })
+  pageReload() {
+    setTimeout(() => {
+      this.router.navigate(['/payment-success']);
+    }, 3000);
   }
-
   ngOnInit(): void {
+    this.userId = JSON.parse(localStorage.getItem('user'))[0].id;
+    this.getUserCards(this.userId);
+    this.getCustomer(this.userId);
     this.activatedRoute.params.subscribe((param) => {
-      if (param['carId']) {
+      if (
+        param['carId'] ||
+        param['propId'] ||
+        param['returnDate'] ||
+        param['rentDate']
+      ) {
         this.cardId = param['carId'];
-      } else if (param['propId']) {
         this.propId = param['propId'];
+        this.rentDate = param['rentDate'];
+        this.returnDate = param['returnDate'];
       }
     });
   }

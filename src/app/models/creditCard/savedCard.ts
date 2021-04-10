@@ -1,4 +1,4 @@
-export interface CreditCard{
+export interface SavedCard{
     cardNumber:string;
     expirationMonth:string;
     expirationYear:string;

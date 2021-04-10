@@ -101,10 +101,18 @@ button {
 
 .saved-cards{
   border:10px solid #8FC692;
-  background-color:#4CAF50;
+  background-color:#4caf50;
   color:#fff;
 }
 .saved-card-number{
-  border-radius: 10px;
-  border:2px solid silver;
+  border-radius: 5px;
+  /* border:2px solid #d3d3d3; */
+  -webkit-box-shadow: -1px 0px 10px 0px rgba(50, 50, 50, 0.45);
+    -moz-box-shadow: -1px 0px 10px 0px rgba(50, 50, 50, 045);
+    box-shadow: -1px 0px 10px 0px rgba(50, 50, 50, 0.45);
+}
+.saved-card-number:hover{
+  -webkit-box-shadow: -1px 0px 10px 0px rgba(76, 175, 80, 0.90);
+  -moz-box-shadow: -1px 0px 10px 0px rgba(76, 175, 80, 0.90);
+  box-shadow: -1px 0px 10px 0px rgba(76, 175, 80, 0.90);
 }

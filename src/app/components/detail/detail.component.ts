@@ -36,6 +36,9 @@ export class DetailComponent implements OnInit {
   returnDate: any;
   carProperty: CarPropertyDto[];
   propId:number;
+  userFindexScore: number;
+
+
   change(dates: Date[]) {
     const convertedDate = moment(dates[0]);
     const convertedDate2 = moment(dates[1]);
@@ -47,6 +50,8 @@ export class DetailComponent implements OnInit {
   getCarDetail(carId: number) {
     this.carService.getDetailsById(carId).subscribe((response) => {
       this.details = response.data;
+      console.log(this.details[0].findexScore);
+      
     });
   }
 
@@ -63,11 +68,27 @@ export class DetailComponent implements OnInit {
         this.carProperty = response.data;
       });
   }
+
+  findexScoreCheck(){
+    let carFindex = this.details[0].findexScore;
+    if(carFindex < this.userFindexScore ){
+      return true;
+    }
+    return false;
+  }
+
   getRentalDateCheck(carId: number, rentDate: Date, returnDate: Date) {
     this.rentalService.getRentalCheck(carId, rentDate, returnDate).subscribe(
       (response) => {
-        if (response.success) {
+        if (this.findexScoreCheck()) {
           this.router.navigate([`/payment/${this.carId}/${this.propId}/${this.rentDate}/${this.returnDate}`]);
+        }
+        else{
+          this.messageService.add({
+            severity: 'error',
+            summary: 'Araç Kiralanamadı!',
+            detail: `Findeks Puanı Yetersiz`,
+          });
         }
       },
       (err) => {
@@ -115,6 +136,7 @@ export class DetailComponent implements OnInit {
   
 
   ngOnInit(): void {
+    this.userFindexScore = JSON.parse(localStorage.getItem('user'))[0].findexScore;
     this.minDateValue();
     this.steps();
     this.activatedRoute.params.subscribe((params) => {

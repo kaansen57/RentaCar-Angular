@@ -1,4 +1,3 @@
-
 .findex-score {
   width: 70px;
   height: 40px;
@@ -8,20 +7,22 @@
 }
 .rental-car {
   width: 100%;
-  height: 50px;
-  background: #D23B38;
+  height: 60px;
+  background: #d23b38;
   color: #fff;
   font-family: "Righteous", cursive;
   font-weight: 700;
   transition: all 0.3s ease-in-out;
+  -webkit-box-shadow: -1px 0px 10px 0px rgba(50, 50, 50, 0.35);
+  -moz-box-shadow: -1px 0px 10px 0px rgba(50, 50, 50, 0.35);
+  box-shadow: -1px 0px 10px 0px rgba(50, 50, 50, 0.35);
 }
 .rental-car:hover {
-    transition: all 0.3s ease-in-out;
-   -webkit-box-shadow: -1px 0px 10px 0px rgba(50, 50, 50, 0.75);
-   -moz-box-shadow: -1px 0px 10px 0px rgba(50, 50, 50, 0.75);
-   box-shadow: -1px 0px 10px 0px rgba(50, 50, 50, 0.75);
-   
-  }
+  transition: all 0.3s ease-in-out;
+  -webkit-box-shadow: -1px 0px 10px 0px rgba(50, 50, 50, 0.75);
+  -moz-box-shadow: -1px 0px 10px 0px rgba(50, 50, 50, 0.75);
+  box-shadow: -1px 0px 10px 0px rgba(50, 50, 50, 0.75);
+}
 .car-name {
   font-size: 1.5rem;
   font-weight: 700;
@@ -46,6 +47,7 @@
 
 .btn-danger {
   background-color: #d23b38;
+  
 }
 .badge-success {
   background-color: #4caf50;
@@ -53,3 +55,15 @@
 .bottom-border {
   border-bottom: 1px solid #4caf50;
 }
+
+.car-property {
+  background-color: #5d686e;
+  width: 80%;
+  height: 50px;
+  color: white;
+  border:5px solid #939a9e;
+  -webkit-box-shadow: -1px 0px 10px 0px rgba(50, 50, 50, 0.35);
+  -moz-box-shadow: -1px 0px 10px 0px rgba(50, 50, 50, 0.35);
+  box-shadow: -1px 0px 10px 0px rgba(50, 50, 50, 0.35);
+}
+

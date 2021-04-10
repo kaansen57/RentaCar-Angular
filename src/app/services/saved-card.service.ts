@@ -5,27 +5,20 @@ import { CreditCard } from '../models/creditCard/creditCard';
 import { ListResponseModel } from '../models/listResponseModel';
 
 @Injectable({
-  providedIn: 'root',
+  providedIn: 'root'
 })
-export class CreditCardService {
+export class SavedCardService {
+
   constructor(private httpClient: HttpClient) {}
-
-  baseURL = 'https://localhost:44383/api/creditcard/';
-
-  creditCardCheck(creditCard: CreditCard) {
-    let newURL = `${this.baseURL}cardcheck`;
-    return this.httpClient.post<CreditCard>(newURL, creditCard);
-  }
+  baseURL = 'https://localhost:44383/api/savedcard/';
 
   creditCardAdd(creditCard: CreditCard) {
-    let newURL = `${this.baseURL}cardadd`;
+    let newURL = `${this.baseURL}add`;
     return this.httpClient.post<CreditCard>(newURL, creditCard);
   }
-  
+
   creditCardByUser(userId: number): Observable<ListResponseModel<CreditCard>> {
-    let newURL = `${this.baseURL}getusercards?userId=${userId}`;
+    let newURL = `${this.baseURL}getbyuserid?userId=${userId}`;
     return this.httpClient.get<ListResponseModel<CreditCard>>(newURL);
   }
-
-  
 }

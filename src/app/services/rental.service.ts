@@ -30,7 +30,7 @@ export class RentalService {
   }
   rentalAdd(rental:Rental){
     let newURL =`${this.baseURL}addrental`;
-    return this.httpClient.post<ListResponseModel<Rental>>(newURL,rental);
+    return this.httpClient.post(newURL,rental);
   }
  
 }

@@ -32,6 +32,11 @@ export class AuthService {
       return false;
     }
   }
+  
+  getToken(key:string){
+      return localStorage.getItem(key)
+  }
+
   setToken(key:string , value:any) {
     if(localStorage.getItem(key)){
       this.deleteToken(key);

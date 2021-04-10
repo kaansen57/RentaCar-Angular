@@ -164,10 +164,9 @@
 
                             <!-- UPDATE FORM -->
                             <form [formGroup]="carUpdateForm" *ngIf="editShow">
-                                <div class="form-group">
-                                    <label for="id">id</label>
-                                    <input class="form-control" readonly type="text" formControlName="id">
-                                </div>
+                                
+                                    <input class="form-control" readonly type="text" formControlName="id" hidden>
+                                
                                 <div class="form-group">
                                     <label for="carName">Arabanın Modeli</label>
                                     <input class="form-control" type="text" formControlName="carName">

@@ -1,4 +1,39 @@
 <app-status></app-status>
+<div class="container-fluid">
+    <p-toast position="top-right" ></p-toast> 
+    <div class="row">
+        <div class="col-md-3 border p-3 sidebar-wrapper">
+            <app-admin-sidebar></app-admin-sidebar>
+        </div>
+        <div class="col-md-6 p-4">
+            <form [formGroup]="userUpdateForm" >
+                
+                    <input class="form-control" type="text" formControlName="id" hidden="true">
+                    <input class="form-control" type="text" formControlName="status" hidden="true">
+                    <input class="form-control" type="text" formControlName="passwordHash" hidden="true">
+                    <input class="form-control" type="text" formControlName="passwordSalt" hidden="true">
 
-yaz
+                <div class="form-group">
+                    <label for=""> E-Posta  </label>
+                    <input class="form-control" type="text" formControlName="email">
+                </div>
+                <div class="form-group">
+                    <label for=""> İsim </label>
+                    <input class="form-control" type="text" formControlName="firstName">
+                </div>
+                <div class="form-group">
+                    <label for=""> Soyisim </label>
+                    <input class="form-control" type="text" formControlName="lastName">
+                </div>
+                <div class="form-group">
+                    <label for=""> Findeks Puanınız </label>
+                    <input class="form-control" type="text" formControlName="findexScore">
+                </div>
+                <button class="btn btn-success" (click)="editUser()">Bilgileri Güncelle</button>
+            </form>
+            
+        </div>
+    </div>
+</div>
+
 <app-footer></app-footer>
