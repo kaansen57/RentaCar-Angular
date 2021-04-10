@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {FormsModule,ReactiveFormsModule} from '@angular/forms';
 
@@ -23,8 +23,10 @@ import {ToolbarModule} from 'primeng/toolbar';
 import {DialogModule} from 'primeng/dialog';
 import {RatingModule} from 'primeng/rating';
 import {TimelineModule} from 'primeng/timeline';
+import {MenubarModule} from 'primeng/menubar';
+import {MenuItem} from 'primeng/api';
 
-
+import { ToastrModule } from 'ngx-toastr';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CarComponent } from './components/car/car.component';
@@ -33,7 +35,7 @@ import { BrandComponent } from './components/brand/brand.component';
 import { ColorComponent } from './components/color/color.component';
 import { RentalComponent } from './components/rental/rental.component';
 import { HomeComponent } from './components/home/home.component';
-import { StatusComponent } from './components/status/status.component';
+import { StatusComponent } from './components/shared/status/status.component';
 import { DetailComponent } from './components/detail/detail.component';
 import { VatAddedPipe } from './pipes/vat-added.pipe';
 import { FilterPipePipe } from './pipes/filter-pipe.pipe';
@@ -55,6 +57,10 @@ import { PaymentSuccessComponent } from './components/payment-success/payment-su
 import { FooterComponent } from './components/shared/footer/footer.component';
 import { AdminComponent } from './components/admin-panel/admin/admin.component';
 import { AdminSidebarComponent } from './components/admin-panel/shared/admin-sidebar/admin-sidebar.component';
+import { LoginComponent } from './components/login/login.component';
+import { AuthInterceptor } from './interceptors/auth.interceptor';
+import { RegisterComponent } from './components/register/register.component';
+import { UserEditComponent } from './components/admin-panel/user-edit/user-edit.component';
 
 
 @NgModule({
@@ -88,6 +94,9 @@ import { AdminSidebarComponent } from './components/admin-panel/shared/admin-sid
     FooterComponent,
     AdminComponent,
     AdminSidebarComponent,
+    LoginComponent,
+    RegisterComponent,
+    UserEditComponent,
   ],
   imports: [
     BrowserModule,
@@ -113,9 +122,14 @@ import { AdminSidebarComponent } from './components/admin-panel/shared/admin-sid
     ToolbarModule,
     DialogModule,
     RatingModule,
-    TimelineModule
+    TimelineModule,
+    ToastrModule.forRoot(),
+    MenubarModule,
+    
   ],
-  providers: [],
+  providers: [
+    {provide:HTTP_INTERCEPTORS,useClass:AuthInterceptor,multi:true},
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

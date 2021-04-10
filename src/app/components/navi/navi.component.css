@@ -58,3 +58,19 @@ h4{
 .p-button-danger{
     background-color: #D23B38;
 }
+
+.dropdown-button{
+    background-color:#fff;
+    width:100%;
+    -webkit-box-shadow: -1px 0px 10px 0px rgba(50, 50, 50, 0.15);
+    -moz-box-shadow: -1px 0px 10px 0px rgba(50, 50, 50, 0.15);
+    box-shadow: -1px 0px 10px 0px rgba(50, 50, 50, 0.15);
+}
+.dropdown-button:hover{
+    -webkit-box-shadow: -1px 0px 10px 0px rgba(50, 50, 50, 0.45);
+    -moz-box-shadow: -1px 0px 10px 0px rgba(50, 50, 50, 0.45);
+    box-shadow: -1px 0px 10px 0px rgba(50, 50, 50, 0.45);
+}
+.dropdown-menu{
+    width:90%;
+}

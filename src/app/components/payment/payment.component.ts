@@ -43,8 +43,6 @@ export class PaymentComponent implements OnInit {
     returnDate:new Date("17.04.2021")
 }
 
-
-
   showConfirm() {
     this.messageService.clear();
     this.messageService.add({
@@ -58,7 +56,8 @@ export class PaymentComponent implements OnInit {
   onConfirm() {
     //kredi kart kaydetme servisi
     // this.messageService.clear('c');
-    this.rentalAdd(this.rentals);
+    // this.rentalAdd(this.rentals);
+    this.cardSave(this.creditCardInformation);
   }
   onReject() {
     this.messageService.clear('c');
@@ -70,15 +69,14 @@ export class PaymentComponent implements OnInit {
   }
   creditCardCheck(creditCard: CreditCard) {
     console.log(creditCard);
-
     this.creditCardService.creditCardCheck(creditCard).subscribe(
       (response) => {
         this.showConfirm();
-        // this.messageService.add({
-        //   severity: 'success',
-        //   summary: 'Ödeme Başarılı !',
-        //   detail: 'Ödeme Başarılı Yönlendiriliyorsunuz!',
-        // });
+        this.messageService.add({
+          severity: 'success',
+          summary: 'Ödeme Başarılı !',
+          detail: 'Ödeme Başarılı Yönlendiriliyorsunuz!',
+        });
         setTimeout(() => {
           this.router.navigate(['/payment-success']);
         }, 2000);
@@ -95,8 +93,18 @@ export class PaymentComponent implements OnInit {
   }
 
   onSubmit(creditCardInformation: CreditCard) {
+    this.creditCardInformation = creditCardInformation;
     this.creditCardCheck(creditCardInformation);
   }
+
+  cardSave(creditCardInformation: CreditCard){
+    this.creditCardService.creditCardAdd(creditCardInformation).subscribe((response)=>{
+        console.log(response);
+    },(errorResponse)=>{
+      console.log(errorResponse);
+    })
+  }
+
   ngOnInit(): void {
     this.activatedRoute.params.subscribe((param) => {
       if (param['carId']) {

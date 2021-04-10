@@ -8,9 +8,12 @@ import { CarComponent } from './components/car/car.component';
 import { DetailComponent } from './components/detail/detail.component';
 import { DriverDetailComponent } from './components/driver-detail/driver-detail.component';
 import { HomeComponent } from './components/home/home.component';
+import { LoginComponent } from './components/login/login.component';
 import { PaymentSuccessComponent } from './components/payment-success/payment-success.component';
 import { PaymentComponent } from './components/payment/payment.component';
+import { RegisterComponent } from './components/register/register.component';
 import { RentalComponent } from './components/rental/rental.component';
+import { LoginGuard } from './guards/login.guard';
 
 const routes: Routes = [
   {path:"",component:HomeComponent},
@@ -25,12 +28,14 @@ const routes: Routes = [
   {path:"payment" , component:PaymentComponent},
   {path:"payment/:carId/:propId/:rentDate/:returnDate" , component:PaymentComponent},
   {path:"payment-success" , component:PaymentSuccessComponent},
+  {path:"login" , component:LoginComponent},
+  {path:"register" , component:RegisterComponent},
 
   //admin panel 
-  {path:"admin" , component:AdminComponent},
-  {path:"admin/car-add" , component:CarAddComponent},
-  {path:"admin/brand-add" , component:BrandAddComponent},
-  {path:"admin/color-add" , component:ColorAddComponent},
+  {path:"admin" , component:AdminComponent,canActivate:[LoginGuard]},
+  {path:"admin/car-add" , component:CarAddComponent,canActivate:[LoginGuard]},
+  {path:"admin/brand-add" , component:BrandAddComponent,canActivate:[LoginGuard]},
+  {path:"admin/color-add" , component:ColorAddComponent,canActivate:[LoginGuard]},
 ];
 
 @NgModule({
