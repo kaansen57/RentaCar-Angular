@@ -8,6 +8,7 @@ import { Rental } from 'src/app/models/rental/rental';
 import { MessageService, MenuItem } from 'primeng/api';
 import { CarPropertyService } from 'src/app/services/car-property.service';
 import { CarPropertyDto } from 'src/app/models/carProperty/carPropertyDto';
+import { LocalStorageService } from 'src/app/services/local-storage.service';
 @Component({
   selector: 'app-detail',
   templateUrl: './detail.component.html',
@@ -18,6 +19,7 @@ export class DetailComponent implements OnInit {
   items: MenuItem[];
   constructor(
     private carService: CarService,
+    private localStorage: LocalStorageService,
     private rentalService: RentalService,
     private messageService: MessageService,
     private activatedRoute: ActivatedRoute,
@@ -36,8 +38,8 @@ export class DetailComponent implements OnInit {
   returnDate: any;
   carProperty: CarPropertyDto[];
   propId:number;
-  userFindexScore: number;
-
+  userFindexScore: number = 0;
+  paymentButtonActive:boolean;
 
   change(dates: Date[]) {
     const convertedDate = moment(dates[0]);
@@ -50,8 +52,6 @@ export class DetailComponent implements OnInit {
   getCarDetail(carId: number) {
     this.carService.getDetailsById(carId).subscribe((response) => {
       this.details = response.data;
-      console.log(this.details[0].findexScore);
-      
     });
   }
 
@@ -136,7 +136,12 @@ export class DetailComponent implements OnInit {
   
 
   ngOnInit(): void {
-    this.userFindexScore = JSON.parse(localStorage.getItem('user'))[0].findexScore;
+    if(this.localStorage.getItem('token') && this.localStorage.getItem('user')) {
+       this.userFindexScore = JSON.parse(this.localStorage.getItem('user')[0].findexScore);
+       this.paymentButtonActive = false;
+    }else{
+      this.paymentButtonActive = true;
+    }
     this.minDateValue();
     this.steps();
     this.activatedRoute.params.subscribe((params) => {

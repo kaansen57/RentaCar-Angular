@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { User } from 'src/app/models/user/user';
 import { AuthService } from 'src/app/services/auth.service';
+import { LocalStorageService } from 'src/app/services/local-storage.service';
 
 @Component({
   selector: 'app-navi',
@@ -8,23 +9,22 @@ import { AuthService } from 'src/app/services/auth.service';
   styleUrls: ['./navi.component.css'],
 })
 export class NaviComponent implements OnInit {
-  constructor(private authService: AuthService) {}
+  constructor(private authService: AuthService , 
+    private localStorage: LocalStorageService) {}
 
   loggedIn: boolean;
   users: User[];
   logout(){
-    this.authService.deleteToken('user');
-    this.authService.deleteToken('token');
-    this.authService.deleteToken('expirationDate');
+    localStorage.clear();
     location.reload();
   }
 
   ngOnInit(): void {
-    this.loggedIn = this.authService.isAuthenticated();
+    this.loggedIn = this.localStorage.isAuthenticated();
     if (this.loggedIn) {
       this.users = JSON.parse(localStorage.getItem('user'));
     } else {
-      console.log('data yok');
+      // console.log('Veri Yok');
     }
   }
 }

@@ -31,18 +31,18 @@
                 [value]="cars | filterPipe:filterText | colorFilter:filterColor | brandFilter:filterBrand | priceFilter:rangeValues[0]:rangeValues[1]"
                 [paginator]="true" [rows]="5" styleClass="dataview-wrapper">
                 <ng-template let-car pTemplate="listItem">
-                    <div class="row ">
+                    <div class="row d-flex align-items-center"  >
                         <div class="col-md-12 p-4 ">
                             <div class="col-md-12 d-flex align-items-center ">
-                                <div class="row">
-                                    <div class="col-md-6 ">
+                                <div class="row  " style="min-width:300px;max-width:300px;">
+                                    <div class="col-md-8 ">
                                         <span class="car-name"> {{car.carName}}</span>
                                         <span class="car-brand"> {{car.brandName }}</span>
                                     </div>
-                                    <div class="col-md-6">
-                                        <div
+                                    <div class="col-md-4 ">
+                                        <span
                                             class="findex-score ml-4 d-flex align-items-center justify-content-center ">
-                                            <i class="pi pi-star mr-1"></i> {{car.findexScore}} </div>
+                                            <i class="pi pi-star mr-1"></i> {{car.findexScore}} </span>
                                     </div>
                                 </div>
                             </div>

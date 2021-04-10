@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { LocalStorageService } from 'src/app/services/local-storage.service';
 
 @Component({
   selector: 'app-payment-success',
@@ -7,9 +9,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PaymentSuccessComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private localStorage : LocalStorageService,
+    private router : Router,
+  ) { }
 
   ngOnInit(): void {
+    if(!this.localStorage.getItem('payment-success')){
+      this.router.navigate(['/'])
+    }
   }
-
 }

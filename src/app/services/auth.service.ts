@@ -24,30 +24,4 @@ export class AuthService {
     return this.httpClient.post<SingleResponseModel<Token>>(newURL,user);
   }
 
-  isAuthenticated() {
-    if(localStorage.getItem('token')){
-      return true;
-    }
-    else{
-      return false;
-    }
-  }
-  
-  getToken(key:string){
-      return localStorage.getItem(key)
-  }
-
-  setToken(key:string , value:any) {
-    if(localStorage.getItem(key)){
-      this.deleteToken(key);
-      localStorage.setItem(key,JSON.stringify(value));
-    }
-    else{
-      localStorage.setItem(key,JSON.stringify(value));
-    }
-  }
-  deleteToken(key:string) {
-    localStorage.removeItem(key);
-  }
-
 }

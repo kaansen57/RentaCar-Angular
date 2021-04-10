@@ -90,8 +90,10 @@
                                 rentDailyLength | vatAdded:0.20}}</div>
                         </div>
                         <hr>
-                        <button class="btn btn-red mt-2 col-md-12"
+                        <button class="btn btn-red mt-2 col-md-12" *ngIf="!paymentButtonActive"
                             (click)="getRentalDateCheck(carId,rentDate,returnDate)">Sonraki Adıma Geç</button>
+                       <button *ngIf="paymentButtonActive" class="btn btn-success mt-2 col-md-12" routerLink="/login">Lütfen Giriş Yapınız !</button>
+                     
                     </div>
                 </div>
             </div>

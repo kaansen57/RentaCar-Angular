@@ -10,6 +10,7 @@ import { Router } from '@angular/router';
 import { MessageService } from 'primeng/api';
 import { Token } from 'src/app/models/auth/token';
 import { AuthService } from 'src/app/services/auth.service';
+import { LocalStorageService } from 'src/app/services/local-storage.service';
 import { UserService } from 'src/app/services/user.service';
 
 @Component({
@@ -20,6 +21,7 @@ import { UserService } from 'src/app/services/user.service';
 })
 export class LoginComponent implements OnInit {
   constructor(
+    private localStorage: LocalStorageService,
     private formBuilder: FormBuilder,
     private authService: AuthService,
     private userService: UserService,
@@ -37,7 +39,7 @@ export class LoginComponent implements OnInit {
   userGet(email:string){
     this.userService.getUserByEmail(email).subscribe((response)=>{
         console.log(response.data);
-        this.authService.setToken('user',response.data);
+        this.localStorage.setItem('user',response.data);
         return response.data;
     });
   }
@@ -45,22 +47,29 @@ export class LoginComponent implements OnInit {
     if (this.loginForm.valid) {
       let loginModel = {...this.loginForm.value};
       this.authService.login(loginModel).subscribe((response)=>{
-        this.authService.setToken('token',response.data.token);
-        this.authService.setToken('expiration',response.data.expiration);
+        localStorage.clear();
+        this.localStorage.setItem('token',response.data.token);
+        this.localStorage.setItem('expiration',response.data.expiration);
         this.userGet(loginModel.email);
-          this.pageReload();
+        this.pageReload();
         this.messageService.add({severity:'success',detail:'Giriş Yapıldı'});
       },(errorResponse)=>{
         this.messageService.add({severity:'error',detail:errorResponse.error});
       })
     }
   }
+
+  
  pageReload() {
     setTimeout(() => {
-      this.router.navigate(['/'])
-    }, 2000);
+      location.href='/';
+    }, 1000);
   }
   ngOnInit(): void {
+    if(this.localStorage.getItem('token'))
+    {
+      this.router.navigate(['/'])
+    } 
     this.createLoginForm();
   }
 }

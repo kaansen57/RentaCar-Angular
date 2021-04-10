@@ -6,6 +6,7 @@ import { CreditCard } from 'src/app/models/creditCard/creditCard';
 import { Rental } from 'src/app/models/rental/rental';
 import { CreditCardService } from 'src/app/services/credit-card.service';
 import { CustomerService } from 'src/app/services/customer.service';
+import { LocalStorageService } from 'src/app/services/local-storage.service';
 import { RentalService } from 'src/app/services/rental.service';
 import { SavedCardService } from 'src/app/services/saved-card.service';
 
@@ -17,6 +18,7 @@ import { SavedCardService } from 'src/app/services/saved-card.service';
 })
 export class PaymentComponent implements OnInit {
   constructor(
+    private localStorage:LocalStorageService,
     private creditCardService: CreditCardService,
     private savedCardService: SavedCardService,
     private messageService: MessageService,
@@ -65,7 +67,6 @@ export class PaymentComponent implements OnInit {
     });
   }
   onConfirm() {
-    //kredi kart kaydetme servisi
     this.cardSave(this.creditCardInformation);
     this.messageService.clear('c');
     this.pageReload();
@@ -114,6 +115,7 @@ export class PaymentComponent implements OnInit {
           summary: 'Ödeme Başarılı !',
           detail: 'Ödeme Başarılı Yönlendiriliyorsunuz!',
         });
+        this.localStorage.setItem('payment-success',true);
         this.showConfirm();
       },
       (err) => {
@@ -146,7 +148,6 @@ export class PaymentComponent implements OnInit {
   onSubmit(creditCardInformation: CreditCard) {
     this.creditCardInformation = creditCardInformation;
     this.creditCardInformation.userId = this.userId;
-    // this.creditCardCheck(creditCardInformation);
     this.rentalAdd();
   }
 
