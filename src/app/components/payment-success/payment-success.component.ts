@@ -18,5 +18,8 @@ export class PaymentSuccessComponent implements OnInit {
     if(!this.localStorage.getItem('payment-success')){
       this.router.navigate(['/'])
     }
+    else{
+      this.localStorage.deleteToken('payment-success');
+    }
   }
 }

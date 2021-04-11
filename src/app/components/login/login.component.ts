@@ -50,6 +50,7 @@ export class LoginComponent implements OnInit {
         localStorage.clear();
         this.localStorage.setItem('token',response.data.token);
         this.localStorage.setItem('expiration',response.data.expiration);
+        this.localStorage.setItem('payment-success',true);
         this.userGet(loginModel.email);
         this.pageReload();
         this.messageService.add({severity:'success',detail:'Giriş Yapıldı'});
