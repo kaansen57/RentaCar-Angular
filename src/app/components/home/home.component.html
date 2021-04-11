@@ -2,7 +2,7 @@
     <div class="container-fluid text-center">
         <div class="row">
             <div class="col-md-7">
-                <img src="../assets/icons/car.svg" alt="">
+                <img src="../assets/icons/car.svg" alt="" appScrollAnimation>
                 <h1 class="title ">İhtiyacın olan aracı en ucuza kirala</h1>
                 <h3 class="subtitle">
                     TravelCar ile farklı seçeneklerde yüzlerce aracı en kolay şekilde kiralayabilirsiniz
@@ -12,7 +12,7 @@
             <div class="col-md-5 mt-3 search-wrapper d-flex justify-content-center align-items-center">
                 <div class="row p-4">
                     <div class="col-md-12">
-                        <h5>4 adımda hızlı kiralama</h5>
+                        <h5 appScrollAnimation>4 adımda hızlı kiralama</h5>
                         <img src="../assets/home-car2.svg" width="300" alt="">
                     </div>
                     <div class="col-md-12">
@@ -40,8 +40,8 @@
 </div>
 <div class="container mt-5">
     <div class="row">
-        <div class="col-md-12">
-            <p-carousel [value]="cars" [autoplayInterval]="5000" [circular]="true" [numVisible]="3">
+        <div class="col-md-12" >
+            <p-carousel [value]="cars" [autoplayInterval]="5000" [circular]="true" [numVisible]="3" >
                 <ng-template pTemplate="header">
                     <h2 class="text-center mb-4">Araç Filomuz</h2>
                     <hr>
@@ -80,7 +80,7 @@
         </div>
     </div>
 </div>
-<div class="wave">
+<div class="wave" >
     <img src="../assets/wave.svg" alt="">
 </div>
 <app-footer></app-footer>

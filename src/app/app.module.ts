@@ -61,6 +61,7 @@ import { LoginComponent } from './components/login/login.component';
 import { AuthInterceptor } from './interceptors/auth.interceptor';
 import { RegisterComponent } from './components/register/register.component';
 import { UserEditComponent } from './components/admin-panel/user-edit/user-edit.component';
+import { ScrollAnimationDirective } from './directive/scroll-animation.directive';
 
 
 @NgModule({
@@ -97,6 +98,7 @@ import { UserEditComponent } from './components/admin-panel/user-edit/user-edit.
     LoginComponent,
     RegisterComponent,
     UserEditComponent,
+    ScrollAnimationDirective,
   ],
   imports: [
     BrowserModule,
