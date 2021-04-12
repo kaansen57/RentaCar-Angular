@@ -19,6 +19,8 @@ export class HomeComponent implements OnInit {
   cars:CarDto[];
   events1: any[];
 
+  examp :string ;
+  
   changeDateEnd(e:Date){
     this.endDate = e;
     console.log(this.startDate);
@@ -55,6 +57,7 @@ export class HomeComponent implements OnInit {
     })
   }
   ngOnInit(): void {
+   
     this.getCarAll();
     this.getCarImageAll();
     this.events1 = [

@@ -12,6 +12,7 @@ import { ResponseModel } from '../models/responseModel';
 export class CarService {
   constructor(private httpClient: HttpClient) { }
 
+  example : string = "deneme";
 /*Data*/
   baseURL: string = 'https://localhost:44383/api/cars/';
 

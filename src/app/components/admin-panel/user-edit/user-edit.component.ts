@@ -16,7 +16,8 @@ import { Router } from '@angular/router';
 })
 export class UserEditComponent implements OnInit {
 
-  constructor(private userService:UserService,
+  constructor(
+    private userService:UserService,
     private localStorageService : LocalStorageService ,
      private formBuilder: FormBuilder,
      private messageService: MessageService,
@@ -50,7 +51,7 @@ export class UserEditComponent implements OnInit {
     let userModel = {...this.userUpdateForm.value};
     this.userService.updateUser(userModel).subscribe((response)=>{
         this.messageService.add({severity:'success',detail:'Bilgiler Güncellendi!'});
-          this.localStorageService.deleteToken('token');
+          localStorage.clear();
           this.pageReload();
       },(err)=>{
         this.messageService.add({severity:'error',detail:'Bilgiler Güncellenemedi!'});

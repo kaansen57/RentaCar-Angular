@@ -22,12 +22,7 @@ header{
     background-color:#a00120;
     transition:all .5s ease;
 } 
-#support-icon svg{
-    fill:white;
-    width:50px;
-    height:25px;
-    margin-top:10px;
-} 
+
 
 .login-or{
     font-size:16px;
@@ -42,11 +37,6 @@ a {
     font-size: 15px;
 }
 
-svg{
-    width:20px;
-    height:20px;
-    margin-right:5px;
-}
 h3{
     color:#333333;
     font-size: 18px;
@@ -73,4 +63,8 @@ h4{
 }
 .dropdown-menu{
     width:90%;
+}
+.dropdown-item:active{
+    background-color: #D23B38;
+    color:#fff;
 }

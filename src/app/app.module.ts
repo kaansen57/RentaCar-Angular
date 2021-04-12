@@ -23,8 +23,6 @@ import {ToolbarModule} from 'primeng/toolbar';
 import {DialogModule} from 'primeng/dialog';
 import {RatingModule} from 'primeng/rating';
 import {TimelineModule} from 'primeng/timeline';
-import {MenubarModule} from 'primeng/menubar';
-import {MenuItem} from 'primeng/api';
 
 import { ToastrModule } from 'ngx-toastr';
 import { AppRoutingModule } from './app-routing.module';
@@ -126,7 +124,6 @@ import { ScrollAnimationDirective } from './directive/scroll-animation.directive
     RatingModule,
     TimelineModule,
     ToastrModule.forRoot(),
-    MenubarModule,
     
   ],
   providers: [

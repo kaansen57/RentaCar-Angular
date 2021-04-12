@@ -14,52 +14,6 @@
             </div>
             <hr>
             <div class="row">
-                <!-- <div class="col-md-4 border">
-                    <form [formGroup]="carAddForm">
-                        <div class="form-group">
-                            <label for="carName">Arabanın Modeli</label>
-                            <input class="form-control" type="text" formControlName="carName">
-                        </div>
-                        <div class="form-group">
-                            <label for="brandId">Marka</label>
-                            <select class="form-control" formControlName="brandId">
-                                <option [value]="brand.brandId" *ngFor="let brand of brands"> {{brand.brandName}}
-                                </option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label for="colorId">Renk</label>
-                            <select class="form-control" formControlName="colorId">
-                                <option [value]="color.colorId" *ngFor="let color of colors"> {{color.colorName}}
-                                </option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label for="modelYear">Model Yılı</label>
-                            <input class="form-control" type="number" formControlName="modelYear">
-                        </div>
-                        <div class="form-group">
-                            <label for="dailyPrice">Günlük Fiyatı</label>
-                            <input class="form-control" type="number" formControlName="dailyPrice">
-                        </div>
-                        <div class="form-group">
-                            <label for="description">Açıklama (opsiyonel) </label>
-                            <textarea class="form-control" formControlName="description"> </textarea>
-                        </div>
-                        <div class="form-group">
-                            <label for="carProperty">Araç Özellikleri</label>
-                            <select class="form-control" formControlName="carProperty">
-                                <option value="{{property.id}}" *ngFor="let property of properties">
-                                    Yakıt: {{property.fuelName}} - Vites : {{property.gearName}} - Sınıfı :
-                                    {{property.carClassName}}
-                                </option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <button class="btn btn-success" (click)="carAdd()">Araba Ekle</button>
-                        </div>
-                    </form>
-                </div> -->
                 <div class="col-md-12 ">
                     <div class="card">
                         <!-- LİST TOOLBAR -->
@@ -109,7 +63,7 @@
                         </p-table>
                         <!-- LİST END -->
 
-                          <!-- DIALOG -->
+                        <!-- DIALOG -->
                         <p-dialog [(visible)]="carDialog" [style]="{width: '450px'}"
                             [header]="carShow ? 'Araç Ekle' : 'Araç Düzenle'" [modal]="true" styleClass="p-fluid">
                             <!-- ADD FORM -->
@@ -157,16 +111,16 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="findexScore">Findex Score</label>
-                                    <input class="form-control"  type="text" formControlName="findexScore">
+                                    <input class="form-control" type="text" formControlName="findexScore">
                                 </div>
                             </form>
                             <!-- ADD FORM END -->
 
                             <!-- UPDATE FORM -->
                             <form [formGroup]="carUpdateForm" *ngIf="editShow">
-                                
-                                    <input class="form-control" readonly type="text" formControlName="id" hidden>
-                                
+
+                                <input class="form-control" readonly type="text" formControlName="id" hidden>
+
                                 <div class="form-group">
                                     <label for="carName">Arabanın Modeli</label>
                                     <input class="form-control" type="text" formControlName="carName">
@@ -213,7 +167,7 @@
                                     <input class="form-control" type="text" formControlName="findexScore">
                                 </div>
                             </form>
-                              <!-- UPDATE FORM END-->
+                            <!-- UPDATE FORM END-->
 
                             <ng-template pTemplate="footer">
                                 <button pButton pRipple label="Güncelle" icon="pi pi-check" class="p-button-text"
@@ -228,4 +182,5 @@
             </div>
         </div>
     </div>
-    <app-footer></app-footer>
+</div>
+<app-footer></app-footer>
