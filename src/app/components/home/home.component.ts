@@ -1,7 +1,9 @@
 import { Component, EventEmitter, OnInit, Output , Input } from '@angular/core';
 import { PrimeIcons } from 'primeng/api';
 import { CarDto } from 'src/app/models/car/carDto';
+import { CarPropertyDto } from 'src/app/models/carProperty/carPropertyDto';
 import { Image } from 'src/app/models/image/image';
+import { CarPropertyService } from 'src/app/services/car-property.service';
 import { CarService } from 'src/app/services/car.service';
 import { ImageService } from 'src/app/services/image.service';
 
@@ -11,15 +13,15 @@ import { ImageService } from 'src/app/services/image.service';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-  constructor(private carService:CarService,private imageService:ImageService) { }
+  constructor(private carService:CarService,private imageService:ImageService,private carPropertyService:CarPropertyService) { }
   startDate: Date;
   endDate: Date;
   rangeDates: Date[];
   images:Image[];
   cars:CarDto[];
+  carProperty:CarPropertyDto[];
   events1: any[];
 
-  examp :string ;
   
   changeDateEnd(e:Date){
     this.endDate = e;
@@ -53,11 +55,20 @@ export class HomeComponent implements OnInit {
   getCarAll(){
     this.carService.getAll().subscribe(response=>{
         this.cars = response.data;
-        console.log(this.cars);
+        this.cars.map((x) => {
+          this.getCarProperty(x.carPropertyId);  
+        });
+        
     })
   }
+
+  getCarProperty(propId:number){
+    this.carPropertyService.getPropertyDetailsById(propId).subscribe((response)=>{
+        this.carProperty = response.data
+    })
+  }
+  
   ngOnInit(): void {
-   
     this.getCarAll();
     this.getCarImageAll();
     this.events1 = [

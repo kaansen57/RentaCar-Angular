@@ -1,12 +1,13 @@
 <div class="container-fluid mb-3">
+  
   <header class="row pt-2">
     <!-- logo -->
-    <div class="col-md-2 d-flex align-items-center">
+    <div class="col-md-2 d-flex justify-content-center align-items-center ">
       <a routerLink="/" class="logo ml-4"> <span><b>Travel</b>
           <span style="color:#333;">Car</span> </span></a>
     </div>
     <!-- header menu -->
-    <div class="col-md-4 d-flex justify-content-end align-items-center header-menu ">
+    <div class="col-md-4 d-flex justify-content-center align-items-center header-menu mt-3 ">
       <a class="mr-4" routerLink="/cars">
         <span>
           <img src="../assets/icons/navi-car.svg" width="30" height="30" alt=""> Kiralık Araçlar
@@ -18,10 +19,9 @@
         </span>
       </a>
     </div>
-   
       
     <!-- login -->
-    <div class="col-md-3 d-flex justify-content-center align-items-center header-menu " *ngIf="!loggedIn">
+    <div class="col-md-3 d-flex justify-content-center align-items-center header-menu mt-3" *ngIf="!loggedIn">
       <a routerLink="/login">
         <span>
           Giriş Yapın
@@ -32,7 +32,7 @@
         <button pButton type="button" label="Kayıt Olun" class="p-button-danger" routerLink="/register"></button>
       </span>
     </div>
-    <div class="col-md-3 d-flex justify-content-center align-items-center header-menu " *ngIf="loggedIn">
+    <div class="col-md-3 d-flex justify-content-center align-items-center header-menu mt-3" *ngIf="loggedIn">
       <button type="button" class="btn dropdown-button dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
         aria-expanded="false">
         <p *ngFor="let user of users">
@@ -47,7 +47,7 @@
       </div>
     </div>
     <!-- support -->
-    <div class="col-md-3">
+    <div class="col-md-3 d-none d-md-block mt-3">
       <a class="mr-4 d-flex align-items-center justify-content-center" href="">
         <span>
           <div id="support-icon">

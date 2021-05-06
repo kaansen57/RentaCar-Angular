@@ -4,6 +4,7 @@
     background:#333;
 }
 .logo{
+    text-align:center;
     font-size:40px;
     color:#D23B38;
     font-family: 'Pacifico', cursive;
@@ -41,4 +42,10 @@ ul li {
     font-size:15px;
     color:silver;
     font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+@media screen and (max-width:765px){
+    .col-md-3 , .col-md-6{
+        text-align:center;
+    }
 }

@@ -20,7 +20,7 @@ export class ScrollAnimationDirective {
     this.renderer.setStyle(
       this.element.nativeElement,
       'transform',
-      `scale(1.1)`
+      `translateY(-10px)`
     );
     this.renderer.setStyle(
       this.element.nativeElement,

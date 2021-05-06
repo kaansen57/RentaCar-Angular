@@ -8,6 +8,8 @@ import { FormBuilder,
   Validators,} from '@angular/forms';
 import { MessageService } from 'primeng/api';
 import { Router } from '@angular/router';
+import { UserOperationClaimService } from 'src/app/services/user-operation-claim.service';
+import { UserOperationClaim } from 'src/app/models/userOperationClaim/userOperationClaim';
 @Component({
   selector: 'app-user-edit',
   templateUrl: './user-edit.component.html',
@@ -18,6 +20,7 @@ export class UserEditComponent implements OnInit {
 
   constructor(
     private userService:UserService,
+    private userOperationClaimService:UserOperationClaimService,
     private localStorageService : LocalStorageService ,
      private formBuilder: FormBuilder,
      private messageService: MessageService,
@@ -26,6 +29,7 @@ export class UserEditComponent implements OnInit {
 
   userUpdateForm : FormGroup;
   user : User[];
+  userOperationClaim : UserOperationClaim[];
 
 
   createUserUpdateForm() {
@@ -39,14 +43,14 @@ export class UserEditComponent implements OnInit {
       passwordHash: ['', Validators.required],
       passwordSalt: ['', Validators.required],
     });
-
-    
   }
+
   pageReload(){
     setTimeout(() => {
       location.reload();
      }, 2000);
   }
+
   editUser(){
     let userModel = {...this.userUpdateForm.value};
     this.userService.updateUser(userModel).subscribe((response)=>{
@@ -58,9 +62,20 @@ export class UserEditComponent implements OnInit {
       })
     }
 
+    getUserOperationClaim(userId:number){
+      this.userOperationClaimService.getUserOperationClaim(userId).subscribe((response)=>{
+          console.log(response);
+          this.userOperationClaim = response.data;
+      })
+    }
+
+    getUserInformation(){
+      this.user = this.localStorageService.getItem('user');
+      this.getUserOperationClaim(this.user[0].id);
+    }
   ngOnInit(): void {
     this.createUserUpdateForm();
-    this.user = this.localStorageService.getItem('user');
+    this.getUserInformation(); 
     this.userUpdateForm.patchValue({...this.user[0]})
   }
 
