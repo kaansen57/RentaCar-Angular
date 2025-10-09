@@ -153,6 +153,7 @@ export class PaymentComponent implements OnInit {
   }
 
   pageReload() {
+    console.log(1)
     setTimeout(() => {
       this.router.navigate(['/payment-success']);
     }, 3000);
