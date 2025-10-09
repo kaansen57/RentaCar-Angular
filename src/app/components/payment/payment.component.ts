@@ -108,6 +108,7 @@ export class PaymentComponent implements OnInit {
     );
   }
   creditCardCheck(creditCard: CreditCard) {
+    console.log(creditCard);
     this.creditCardService.creditCardCheck(creditCard).subscribe(
       (response) => {
         this.messageService.add({
